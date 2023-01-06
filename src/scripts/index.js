@@ -1,24 +1,37 @@
+/* eslint-disable import/no-unresolved */
 import 'regenerator-runtime';
 import '../styles/style.css';
 import Swiper from 'swiper';
 import 'swiper/css';
-console.log('indah yak');
 
-const swiper = new Swiper('.swiper', {
-slidesPerView: 1,
-  direction: 'horizontal',
-  spaceBetween: 10,
-  loop: true,
-  // navigation: {
-  //   nextEl: '.swiper-button-next',
-  //   prevEl: '.swiper-button-prev',
-  // },
-  breakpoints: {
-    480: {
-      slidesPerView: 2,
-    },
-    640: {
-      slidesPerView: 3,
-    }
-  }
-})
+import App from './views/app';
+
+const app = new App({
+  buttonToggle: document.querySelector('#buttonDrawer'),
+  appDrawer: document.querySelector('#appDrawer'),
+  darkSwitch: document.querySelector('#darkSwitch'),
+  menuButton: null,
+  content: document.querySelector('#mainContent'),
+  bottombarMenus: document.querySelectorAll('#bottomBar > a'),
+});
+
+const test = document.querySelectorAll('#bottomBar a');
+console.log(test);
+// const swiper = new Swiper('.swiper', {
+// slidesPerView: 1,
+//   direction: 'horizontal',
+//   spaceBetween: 10,
+//   loop: true,
+//   // navigation: {
+//   //   nextEl: '.swiper-button-next',
+//   //   prevEl: '.swiper-button-prev',
+//   // },
+//   breakpoints: {
+//     480: {
+//       slidesPerView: 2,
+//     },
+//     640: {
+//       slidesPerView: 3,
+//     }
+//   }
+// })

@@ -1,132 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>nonton</title>
-</head>
-<body class="bg-sky-50">
-  <nav class="p-2 sticky top-0 block w-full z-50">
-    <div class="w-full h-fit bg-sky-50/50 rounded-md flex justify-between items-center backdrop-blur-lg px-3 py-2">
-      <img src="./logo/nonton.png" alt="" class="h-8">
-      <div>
-        <i class="fa-regular fa-magnifying-glass text-xl text-neutral-800 px-2" id="search-toggle" aria-hidden="true"></i>
-        <i class="fa-regular fa-ellipsis-stroke-vertical text-xl text-neutral-800 px-2"></i>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>nonton</title>
+  </head>
+  <body class="bg-sky-50">
+    <nav class="p-2 sticky top-0 block w-full z-50">
+      <div
+        class="w-full h-[55px] bg-sky-300/50 rounded-xl flex justify-between items-center backdrop-blur-lg px-3 py-2"
+      >
+        <img src="./logo/nonton.svg" alt="" class="h-9" />
+        <div class="flex">
+          <img
+            src="./icon/moon.svg"
+            alt="dark switch"
+            id="darkSwitch"
+            class="h-[30px] mx-1"
+          />
+          <img
+            src="./icon/more.svg"
+            alt="button drawer"
+            id="buttonDrawer"
+            class="h-[30px] mx-1"
+          />
+        </div>
       </div>
-    </div>
-    <search-bar class="hidden"></search-bar>
-  </nav>
-  <main class="">
-    <section id="recommended">
-      <h1 class="text-xl text-bold px-2">Recommended</h1>
-      <div class="swiper">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide px-2">
-            <div class="item-image relative rounded-xl overflow-hidden">
-              <img src="./assets/img/backdrop-11.webp" alt="" class="brightness-90">
-              <div class="item-rate absolute bottom-0 indent-[-2px] text-sm flex h-fit justify-between items-center w-full px-2 bg-gradient-to-b from-black/10 to-black/70">
-                <h2 class="font-semibold w-[70%] p-1 text-lg font-opensns text-gray-100">Thor Ragnarok</h2>
-                <div>
-                  <i class="fa-solid fa-star text-yellow-300"></i>
-                  <i class="fa-solid fa-star text-yellow-300"></i>
-                  <i class="fa-solid fa-star text-yellow-300"></i>
-                  <i class="fa-regular fa-star-half-stroke text-yellow-300"></i>
-                  <i class="fa-light fa-star text-yellow-300"></i>
+      <search-bar class="hidden"></search-bar>
+    </nav>
+    <h1>hai hello world</h1>
+    <!-- <main id="mainContent" class="">
+      <section id="recommended">
+        <h1 class="text-xl text-bold px-2">Recommended</h1>
+        <div class="swiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide px-2">
+              <div class="item-image relative rounded-xl overflow-hidden">
+                <img src="./img/backdrop-2.webp" alt="" class="brightness-90" />
+                <div
+                  class="item-rate absolute bottom-0 indent-[-2px] text-sm flex h-fit justify-between items-center w-full px-2 bg-gradient-to-b from-black/0 to-black/80"
+                >
+                  <h2
+                    class="font-semibold w-[70%] p-1 text-lg font-opensns text-gray-100"
+                  >
+                    She Hulk: Attournet at Law
+                  </h2>
+                  <div>
+                    <i class="fa-solid fa-star text-yellow-300"></i>
+                    <i class="fa-solid fa-star text-yellow-300"></i>
+                    <i class="fa-solid fa-star text-yellow-300"></i>
+                    <i
+                      class="fa-regular fa-star-half-stroke text-yellow-300"
+                    ></i>
+                    <i class="fa-light fa-star text-yellow-300"></i>
+                  </div>
                 </div>
               </div>
+              <div class="flex flex-wrap">
+                <a
+                  href="#"
+                  class="m-[4px] mt-[7px] px-5 py-[4px] rounded-full block bg-gradient-to-r from-fuchsia-400 to-violet-400 text-white text-[15px] font-medium"
+                  >Action</a
+                >
+                <a
+                  href="#"
+                  class="m-[4px] mt-[7px] px-5 py-[4px] rounded-full block bg-gradient-to-r from-fuchsia-400 to-violet-400 text-white text-[15px] font-medium"
+                  >Comedy</a
+                >
+                <a
+                  href="#"
+                  class="m-[4px] mt-[7px] px-5 py-[4px] rounded-full block bg-gradient-to-r from-fuchsia-400 to-violet-400 text-white text-[15px] font-medium"
+                  >Family</a
+                >
+                <a
+                  href="#"
+                  class="m-[4px] mt-[7px] px-5 py-[4px] rounded-full block bg-gradient-to-r from-fuchsia-400 to-violet-400 text-white text-[15px] font-medium"
+                  >Sci-Fi & Fantasy</a
+                >
+                <a
+                  href="#"
+                  class="m-[4px] mt-[7px] px-5 py-[4px] rounded-full block bg-gradient-to-r from-fuchsia-400 to-violet-400 text-white text-[15px] font-medium"
+                  >Documentation</a
+                >
+              </div>
             </div>
-            <div class="flex flex-wrap">
-              <a href="#" class="m-[3px] px-3 py-px rounded-full block bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white text-sm">Action</a>
-              <a href="#" class="m-[3px] px-3 py-px rounded-full block bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white text-sm">Comedy</a>
-              <a href="#" class="m-[3px] px-3 py-px rounded-full block bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white text-sm">Sci-Fi & Fantasy</a>
-              <a href="#" class="m-[3px] px-3 py-px rounded-full block bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white text-sm">Documentation</a>
+          </div>
+        </div>
+      </section>
+      <section class="w-full bg-gray-200 h-[50px] my-2"></section>
+      <section id="populer">
+        <h1 class="my-1 text-lg font-bold">recommended for you</h1>
+        <div class="flex justify-start gap-x-[2%] overflow-scroll px-2">
+          <div class="min-w-[32%]">
+            <div class="item-img rounded-lg overflow-hidden">
+              <img src="./img/poster-11.webp" alt="" />
             </div>
+            <h3 class="text-md font-bold mx-1">thor ragnarog</h3>
+            <p class="text-sm mx-1 text-neutral-600">27 dec 2020</p>
+          </div>
+          <div class="min-w-[32%]">
+            <div class="item-img rounded-lg overflow-hidden">
+              <img src="./img/poster-11.webp" alt="" />
+            </div>
+            <h3 class="text-md font-bold mx-1">thor ragnarog</h3>
+            <p class="text-sm mx-1 text-neutral-600">27 dec 2020</p>
+          </div>
+          <div class="min-w-[32%]">
+            <div class="item-img rounded-lg overflow-hidden">
+              <img src="./img/poster-11.webp" alt="" />
+            </div>
+            <h3 class="text-md font-bold mx-1">thor ragnarog</h3>
+            <p class="text-sm mx-1 text-neutral-600">27 dec 2020</p>
+          </div>
+          <div class="min-w-[32%]">
+            <div class="item-img rounded-lg overflow-hidden">
+              <img src="./img/poster-11.webp" alt="" />
+            </div>
+            <h3 class="text-md font-bold mx-1">thor ragnarog</h3>
+            <p class="text-sm mx-1 text-neutral-600">27 dec 2020</p>
+          </div>
+          <div class="min-w-[32%]">
+            <div class="item-img rounded-lg overflow-hidden">
+              <img src="./img/poster-11.webp" alt="" />
+            </div>
+            <h3 class="text-md font-bold mx-1">thor ragnarog</h3>
+            <p class="text-sm mx-1 text-neutral-600">27 dec 2020</p>
+          </div>
+          <div class="min-w-[32%]">
+            <div class="item-img rounded-lg overflow-hidden">
+              <img src="./img/poster-11.webp" alt="" />
+            </div>
+            <h3 class="text-md font-bold mx-1">thor ragnarog</h3>
+            <p class="text-sm mx-1 text-neutral-600">27 dec 2020</p>
+          </div>
+          <div class="min-w-[32%]">
+            <div class="item-img rounded-lg overflow-hidden">
+              <img src="./img/poster-11.webp" alt="" />
+            </div>
+            <h3 class="text-md font-bold mx-1">thor ragnarog</h3>
+            <p class="text-sm mx-1 text-neutral-600">27 dec 2020</p>
+          </div>
+          <div class="min-w-[32%]">
+            <div class="item-img rounded-lg overflow-hidden">
+              <img src="./img/poster-11.webp" alt="" />
+            </div>
+            <h3 class="text-md font-bold mx-1">thor ragnarog</h3>
+            <p class="text-sm mx-1 text-neutral-600">27 dec 2020</p>
           </div>
         </div>
-      </div>
-    </section>
-    <section class="w-full bg-gray-200 h-[50px] my-2">
-
-    </section>
-    <section id="populer">
-      <h1 class="my-1 text-lg font-bold">recommended for you</h1>
-      <div class="flex justify-start gap-x-[2%] overflow-scroll px-2">
-        <div class="min-w-[32%]">
-          <div class="item-img rounded-lg overflow-hidden">
-            <img src="./assets/img/poster-11.webp" alt="">
-          </div>
-          <h3 class="text-md font-bold mx-1">thor ragnarog</h3>
-          <p class="text-sm mx-1 text-neutral-600">
-            27 dec 2020
-          </p>
-        </div>
-        <div class="min-w-[32%]">
-          <div class="item-img rounded-lg overflow-hidden">
-            <img src="./assets/img/poster-11.webp" alt="">
-          </div>
-          <h3 class="text-md font-bold mx-1">thor ragnarog</h3>
-          <p class="text-sm mx-1 text-neutral-600">
-            27 dec 2020
-          </p>
-        </div>
-        <div class="min-w-[32%]">
-          <div class="item-img rounded-lg overflow-hidden">
-            <img src="./assets/img/poster-11.webp" alt="">
-          </div>
-          <h3 class="text-md font-bold mx-1">thor ragnarog</h3>
-          <p class="text-sm mx-1 text-neutral-600">
-            27 dec 2020
-          </p>
-        </div>
-        <div class="min-w-[32%]">
-          <div class="item-img rounded-lg overflow-hidden">
-            <img src="./assets/img/poster-11.webp" alt="">
-          </div>
-          <h3 class="text-md font-bold mx-1">thor ragnarog</h3>
-          <p class="text-sm mx-1 text-neutral-600">
-            27 dec 2020
-          </p>
-        </div>
-        <div class="min-w-[32%]">
-          <div class="item-img rounded-lg overflow-hidden">
-            <img src="./assets/img/poster-11.webp" alt="">
-          </div>
-          <h3 class="text-md font-bold mx-1">thor ragnarog</h3>
-          <p class="text-sm mx-1 text-neutral-600">
-            27 dec 2020
-          </p>
-        </div>
-        <div class="min-w-[32%]">
-          <div class="item-img rounded-lg overflow-hidden">
-            <img src="./assets/img/poster-11.webp" alt="">
-          </div>
-          <h3 class="text-md font-bold mx-1">thor ragnarog</h3>
-          <p class="text-sm mx-1 text-neutral-600">
-            27 dec 2020
-          </p>
-        </div>
-        <div class="min-w-[32%]">
-          <div class="item-img rounded-lg overflow-hidden">
-            <img src="./assets/img/poster-11.webp" alt="">
-          </div>
-          <h3 class="text-md font-bold mx-1">thor ragnarog</h3>
-          <p class="text-sm mx-1 text-neutral-600">
-            27 dec 2020
-          </p>
-        </div>
-        <div class="min-w-[32%]">
-          <div class="item-img rounded-lg overflow-hidden">
-            <img src="./assets/img/poster-11.webp" alt="">
-          </div>
-          <h3 class="text-md font-bold mx-1">thor ragnarog</h3>
-          <p class="text-sm mx-1 text-neutral-600">
-            27 dec 2020
-          </p>
-        </div>
-      </div>
-    </section>
-  </main>
-  <div class="fixed bottom-0 left-0 w-full h-[60px] bg-sky-50/50 backdrop-blur-lg"></div>
-</body>
+      </section>
+    </main> -->
+    <div
+      id="bottomBar"
+      class="fixed bottom-0 left-0 w-full h-[60px] bg-sky-300/50 backdrop-blur-lg flex items-center justify-evenly"
+    >
+      <a href="#/test" class="bottom-bar__active" tabindex="-1">
+        <img src="./icon/home-bulk.svg" class="h-[30px] mx-1" />
+        <p class="hidden">HOME</p>
+      </a>
+      <a href="/#/like" class="" tabindex="0">
+        <img src="./icon/favorite.svg" class="h-[30px] mx-1" />
+        <p class="hidden">LIKE</p>
+      </a>
+      <a href="#/list" class="" tabindex="0">
+        <img src="./icon/watchlist.svg" class="h-[30px] mx-1" />
+        <p class="hidden">LIST</p>
+      </a>
+      <button class="">
+        <img src="./icon/search.svg" class="h-[30px] mx-1" />
+      </button>
+    </div>
+    <div id="appDrawer"></div>
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+  </body>
 </html>

@@ -1,5 +1,21 @@
-@import url('https://site-assets.fontawesome.com/releases/v6.1.2/css/all.css');
+@import url("https://site-assets.fontawesome.com/releases/v6.1.2/css/all.css");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  #bottomBar img,
+  #bottomBar p {
+    pointer-events: none;
+  }
+
+  .bottom-bar__active {
+    @apply flex items-center justify-center bg-red-500 px-2 py-1 rounded-full;
+    pointer-events: none;
+  }
+
+  .bottom-bar__active > p {
+    @apply block text-base text-sky-50 px-1;
+  }
+}
