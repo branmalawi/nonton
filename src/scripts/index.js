@@ -15,8 +15,14 @@ const app = new App({
   bottombarMenus: document.querySelectorAll('#bottomBar > a'),
 });
 
-const test = document.querySelectorAll('#bottomBar a');
-console.log(test);
+window.addEventListener('hashchange', () => {
+  app.renderPage();
+});
+
+window.addEventListener('load', async () => {
+  app.renderPage();
+  // await swRegister();
+});
 // const swiper = new Swiper('.swiper', {
 // slidesPerView: 1,
 //   direction: 'horizontal',

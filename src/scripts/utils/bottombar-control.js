@@ -2,18 +2,30 @@
 /* eslint-disable eqeqeq */
 /* eslint-disable max-len */
 /* eslint-disable no-unused-expressions */
+import UrlParser from '../routes/url-parser';
+
 const BottomBarController = {
   init({ buttonMenus }) {
-    buttonMenus.forEach((buttonMenu) => {
-      buttonMenu.addEventListener('click', (event) => {
-        this._activatingButton(event, buttonMenus);
-      });
+    window.addEventListener('hashchange', () => {
+      const url = UrlParser.parseActiveUrlWithCombiner();
+      this._activatingButton(this.route[url], buttonMenus);
     });
+    window.addEventListener('load', () => {
+      const url = UrlParser.parseActiveUrlWithCombiner();
+      this._activatingButton(this.route[url], buttonMenus);
+    });
+  },
+
+  route: {
+    '/': '#/home',
+    '/home': '#/home',
+    '/favorite': '#/favorite',
+    '/list': '#/list',
   },
 
   _activatingButton(event, buttonMenus) {
     buttonMenus.forEach((buttonMenu) => {
-      buttonMenu == event.target ? this._printActiveButton(buttonMenu) : this._printUnactiveButton(buttonMenu);
+      buttonMenu.getAttribute('href') == event ? this._printActiveButton(buttonMenu) : this._printUnactiveButton(buttonMenu);
     });
   },
 

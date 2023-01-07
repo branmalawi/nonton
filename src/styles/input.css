@@ -11,11 +11,15 @@
   }
 
   .bottom-bar__active {
-    @apply flex items-center justify-center bg-red-500 px-2 py-1 rounded-full;
+    @apply flex items-center justify-center bg-gradient-to-br from-pink-400 to-fuchsia-400 px-2 py-[5px] rounded-full;
     pointer-events: none;
   }
 
+  .bottom-bar__active > img {
+    @apply h-[30px];
+  }
+
   .bottom-bar__active > p {
-    @apply block text-base text-sky-50 px-1;
+    @apply block text-base text-sky-50 px-1 tracking-wider font-medium;
   }
 }
