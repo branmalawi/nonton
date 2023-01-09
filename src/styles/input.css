@@ -22,4 +22,26 @@
   .bottom-bar__active > p {
     @apply block text-base text-sky-50 px-1 tracking-wider font-medium;
   }
+
+  .appDrawerListItem::-webkit-scrollbar {
+    display: none;
+  }
+
+  .appDrawer-actived {
+    @apply translate-x-full;
+  }
+
+  .appDrawerListItem__title {
+    @apply ml-1 font-medium text-gray-700 text-sm;
+  }
+
+  .appDrawerListItem .item-icon {
+    @apply w-[35px] h-[35px] p-2 rounded-lg;
+  }
+  .appDrawerListItem .item-name {
+    @apply text-base font-medium ml-4 w-full;
+  }
+  .appDrawerListItem i {
+    @apply text-sm;
+  }
 }

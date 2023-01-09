@@ -1,13 +1,17 @@
-const drawer = {
-  init({ buttonToggle, appDrawer, content }) {
-    buttonToggle.addEventListener('click', () => {
-      appDrawer.classList.toggle('drawer-active');
+const DrawerInitiator = {
+  init({ buttonOpenDrawer, appDrawer, overlay }) {
+    buttonOpenDrawer.addEventListener('click', () => {
+      appDrawer.classList.add('appDrawer-actived');
+      overlay.removeAttribute('hidden');
+      overlay.classList.add('bg-black/50');
     });
 
-    content.addEventListener('click', () => {
-      appDrawer.classList.remove('drawer-active');
+    overlay.addEventListener('click', () => {
+      appDrawer.classList.remove('appDrawer-actived');
+      overlay.setAttribute('hidden', '');
+      overlay.classList.remove('bg-black/60');
     });
   },
 };
 
-export default drawer;
+export default DrawerInitiator;

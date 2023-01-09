@@ -7,11 +7,13 @@ import 'swiper/css';
 import App from './views/app';
 
 const app = new App({
-  buttonToggle: document.querySelector('#buttonDrawer'),
+  navbar: document.querySelector('#navBar'),
+  buttonOpenDrawer: document.querySelector('#buttonDrawer'),
   appDrawer: document.querySelector('#appDrawer'),
   darkSwitch: document.querySelector('#darkSwitch'),
   menuButton: null,
   content: document.querySelector('#mainContent'),
+  overlay: document.querySelector('#overlay'),
   bottombarMenus: document.querySelectorAll('#bottomBar > a'),
 });
 
