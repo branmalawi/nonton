@@ -2,8 +2,7 @@ const HideNavbar = {
   init({ navbar }) {
     this.offsetYOld = 0;
     window.addEventListener('scroll', (event) => {
-      console.log(window.innerWidth);
-      if (window.innerWidth < 480) {
+      if (window.innerWidth < 640) {
         this.offsetYNew = window.scrollY;
         if (this.offsetYNew > this.offsetYOld) {
           this._scrollTop(event, navbar);

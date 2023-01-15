@@ -1,14 +1,23 @@
 /* eslint-disable import/no-unresolved */
 import 'regenerator-runtime';
+// import Swiper from 'swiper';
+// import 'swiper/css';
 import '../styles/style.css';
-import Swiper from 'swiper';
-import 'swiper/css';
+import './components/bottomBar';
+import './components/appDrawer';
 
 import App from './views/app';
 
 const app = new App({
+  body: document.querySelector('body'),
   navbar: document.querySelector('#navBar'),
   buttonOpenDrawer: document.querySelector('#buttonDrawer'),
+  searchContainer: document.querySelector('#searchBar'),
+  searchForm: document.querySelector('#searchBar form'),
+  searchbar: document.querySelector('#searchData'),
+  searchResult: document.querySelector('#searchResult'),
+  btnsubmitandclose: document.querySelector('#submitAndClose'),
+  btnOpenSearchbar: document.querySelector('#openSearchbar'),
   appDrawer: document.querySelector('#appDrawer'),
   darkSwitch: document.querySelector('#darkSwitch'),
   menuButton: null,

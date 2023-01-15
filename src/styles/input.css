@@ -5,6 +5,21 @@
 @tailwind utilities;
 
 @layer components {
+  body::-webkit-scrollbar {
+    display: none;
+  }
+  .search-result::-webkit-scrollbar {
+    display: none;
+  }
+
+  #searchBar.search-actived {
+    @apply drop-shadow-md block;
+  }
+
+  .search-actived .search-result {
+    @apply sm:max-h-60;
+  }
+
   #bottomBar img,
   #bottomBar p {
     pointer-events: none;
@@ -27,8 +42,12 @@
     display: none;
   }
 
+  .appDrawerListItem {
+    height: calc(100% - 50px);
+  }
+
   .appDrawer-actived {
-    @apply translate-x-full;
+    @apply translate-x-[calc(100%+8px)];
   }
 
   .appDrawerListItem__title {
@@ -43,5 +62,46 @@
   }
   .appDrawerListItem i {
     @apply text-sm;
+  }
+}
+
+@layer utilities {
+  #appDrawer {
+    transition: 0.4s;
+  }
+  .actived {
+    @apply w-[250px];
+  }
+  .actived .appDrawerHead {
+    @apply px-3;
+  }
+  .actived .logo-text {
+    @apply h-[37px];
+    transition: 0.1s;
+    transition-delay: 0.2s;
+  }
+  .actived .stroke {
+    @apply hidden;
+  }
+  .actived .appDrawerListItem__title {
+    @apply inline;
+    transition: 0.1s;
+    transition-delay: 0.7s;
+  }
+  .actived .appDrawerListItem .item-name {
+    @apply inline;
+  }
+  .actived .appDrawerListItem i {
+    @apply inline;
+    transition: 0.1s;
+    transition-delay: 0.9s;
+  }
+  .actived .toggle-dark {
+    @apply w-16 flex;
+  }
+
+  .main-change-size {
+    width: calc(100% - 72px);
+    margin: 0 0 0 auto;
   }
 }

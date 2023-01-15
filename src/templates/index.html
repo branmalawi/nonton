@@ -6,33 +6,56 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>nonton</title>
   </head>
-  <body class="bg-sky-50">
+  <body class="bg-sky-50 sm:overflow-auto">
     <nav
       id="navBar"
-      class="p-2 sticky top-0 block w-full z-10 transition duration-500"
+      class="md:main-change-size sticky sm:relative top-0 block w-full sm:p-2 z-10 transition duration-500 p-2"
     >
       <div
-        class="w-full h-[55px] bg-sky-50/60 rounded-xl flex justify-between items-center backdrop-blur-lg px-3 py-2"
+        class="w-full h-[55px] bg-sky-50/60 rounded-xl flex justify-between sm:justify-end md:justify-center items-center backdrop-blur-lg px-3 py-2"
       >
-        <img src="./logo/nonton.svg" alt="" class="h-9" />
-        <div class="flex">
-          <img
-            src="./icon/moon.svg"
-            alt="dark switch"
-            id="darkSwitch"
-            class="h-[30px] mx-1"
-          />
-          <img
-            src="./icon/more.svg"
-            alt="button drawer"
-            id="buttonDrawer"
-            class="h-[30px] mx-1"
-          />
+        <img src="./logo/nonton.svg" alt="" class="h-9 sm:hidden" />
+        <img
+          id="buttonDrawer"
+          src="./icon/more.svg"
+          type="image/svg+xml"
+          class="h-[30px] mx-1 md:hidden brightness-0"
+        />
+        <div
+          id="searchBar"
+          class="search fixed top-0 left-0 md:left-1/2 md:translate-x-[-50%] w-full h-screen sm:h-fit sm:w-1/2 md:w-9/12 sm:max-w-lg bg-sky-50 p-2 sm:p-1 sm:rounded-xl hidden sm:block"
+        >
+          <form
+            class="w-full flex items-center bg-[#DDE7F0] rounded-xl py-1 px-1 md:px-2"
+          >
+            <picture id="submitAndClose" class="ml-1.5 mr-0.5">
+              <source
+                media="(min-width:640px)"
+                srcset="./icon/search.svg"
+                height="20"
+                width="20"
+              />
+              <img src="./icon/back.svg" alt="" />
+            </picture>
+            <input
+              type="search"
+              name="searchData"
+              id="searchData"
+              class="w-full bg-transparent py-2 px-3 text-base border-none outline-none"
+              placeholder="search some movie, tv show, people.."
+            />
+          </form>
+          <ul
+            id="searchResult"
+            class="search-result w-full h-[90vh] mt-1 overflow-auto sm:max-h-0 sm:h-fit"
+          ></ul>
         </div>
       </div>
-      <search-bar class="hidden"></search-bar>
     </nav>
-    <main id="mainContent" class="text-xl font-bold bg-sky-50">
+    <main
+      id="mainContent"
+      class="text-xl font-bold bg-sky-50 w-full md:main-change-size"
+    >
       <span>hello world</span><span>hello world</span><span>hello world</span
       ><span>hello world</span><span>hello world</span><span>hello world</span
       ><span>hello world</span><span>hello world</span><span>hello world</span
@@ -42,6 +65,13 @@
       ><span>hello world</span><span>hello world</span><span>hello world</span
       ><span>hello world</span><span>hello world</span><span>hello world</span
       ><span>hello world</span><span>hello world</span><span>hello world</span>
+      <ul>
+        <li>hai</li>
+        <li>hai</li>
+        <li>hai</li>
+        <li>hai</li>
+        <li>hai</li>
+      </ul>
       <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
       <span>hello world</span><span>hello world</span><span>hello world</span
       ><span>hello world</span><span>hello world</span><span>hello world</span
@@ -81,7 +111,7 @@
                   class="item-rate absolute bottom-0 indent-[-2px] text-sm flex h-fit justify-between items-center w-full px-2 bg-gradient-to-b from-black/0 to-black/80"
                 >
                   <h2
-                    class="font-semibold w-[70%] p-1 text-lg font-opensns text-gray-100"
+                    class="font-semibold w-[70%] p-1 text-lg sm:text-base font-opensns text-gray-100"
                   >
                     She Hulk: Attournet at Law
                   </h2>
@@ -90,7 +120,7 @@
                     <i class="fa-solid fa-star text-yellow-300"></i>
                     <i class="fa-solid fa-star text-yellow-300"></i>
                     <i
-                      class="fa-regular fa-star-half-stroke text-yellow-300"
+                      class="fa-regular fa-star-half-stroke hidden sm:block text-yellow-300"
                     ></i>
                     <i class="fa-light fa-star text-yellow-300"></i>
                   </div>
@@ -190,184 +220,17 @@
         </div>
       </section>
     </main> -->
-    <div
-      id="bottomBar"
-      class="fixed bottom-0 left-0 w-full h-[60px] bg-sky-50/50 backdrop-blur-lg flex items-center justify-evenly"
-    >
-      <a href="#/home" class="" tabindex="0">
-        <img src="./icon/home.svg" class="h-7 mx-1" />
-        <p class="hidden">HOME</p>
-      </a>
-      <a href="#/favorite" class="" tabindex="0">
-        <img src="./icon/favorite.svg" class="h-7 mx-1" />
-        <p class="hidden">LIKE</p>
-      </a>
-      <a href="#/list" class="" tabindex="0">
-        <img src="./icon/watchlist.svg" class="h-7 mx-1" />
-        <p class="hidden">LIST</p>
-      </a>
-      <button class="">
-        <img src="./icon/search.svg" class="h-7 mx-1" />
-      </button>
-    </div>
-    <div
+    <!-- sidebar -->
+    <app-drawer
       id="appDrawer"
-      class="h-screen w-[300px] fixed top-0 right-full bg-sky-50/80 backdrop-blur-xl z-50 transition duration-500"
-    >
-      <div class="appDrawerHead flex items-center px-3 h-24">
-        <img src="./logo/nonton.svg" alt="" class="w-[60px]" />
-        <img
-          src="./logo/text-nonton.svg"
-          class="h-[40px] brightness-[25%] ml-1"
-        />
-      </div>
-      <div class="appDrawerListItem w-[90%] m-auto h-[85%] overflow-auto">
-        <p class="appDrawerListItem__title">Apps</p>
-        <ul class="mt-4 mb-7">
-          <li class="my-3">
-            <a href="#" class="flex items-center">
-              <img
-                src="./icon/home-bold.svg"
-                alt=""
-                class="item-icon bg-[#139DBB]"
-              />
-              <span class="item-name">Home</span>
-              <i class="fa-regular fa-angle-right text-gray-700 pr-3"></i>
-            </a>
-          </li>
-          <li class="my-3">
-            <a href="#" class="flex items-center">
-              <img
-                src="./icon/favorite-bold.svg"
-                alt=""
-                class="item-icon bg-[#FF2574]"
-              />
-              <span class="item-name">Favorite</span>
-              <i class="fa-regular fa-angle-right text-gray-700 pr-3"></i>
-            </a>
-          </li>
-          <li class="my-3">
-            <a href="#" class="flex items-center">
-              <img
-                src="./icon/watchlist-bold.svg"
-                alt=""
-                class="item-icon bg-[#B42DE3]"
-              />
-              <span class="item-name">Watch List</span>
-              <i class="fa-regular fa-angle-right text-gray-700 pr-3"></i>
-            </a>
-          </li>
-        </ul>
-        <p class="appDrawerListItem__title">Movie</p>
-        <ul class="mt-4 mb-7">
-          <li class="my-3">
-            <a href="#" class="flex items-center">
-              <img
-                src="./icon/upcoming.svg"
-                alt=""
-                class="item-icon bg-[#FF4B4B]"
-              />
-              <span class="item-name">Upcoming</span>
-              <i class="fa-regular fa-angle-right text-gray-700 pr-3"></i>
-            </a>
-          </li>
-          <li class="my-3">
-            <a href="#" class="flex items-center">
-              <img
-                src="./icon/popular.svg"
-                alt=""
-                class="item-icon bg-[#14E07E]"
-              />
-              <span class="item-name">Popular</span>
-              <i class="fa-regular fa-angle-right text-gray-700 pr-3"></i>
-            </a>
-          </li>
-          <li class="my-3">
-            <a href="#" class="flex items-center">
-              <img
-                src="./icon/top-rated.svg"
-                alt=""
-                class="item-icon bg-[#4959EF]"
-              />
-              <span class="item-name">Top Rated</span>
-              <i class="fa-regular fa-angle-right text-gray-700 pr-3"></i>
-            </a>
-          </li>
-          <li class="my-3">
-            <a href="#" class="flex items-center">
-              <img
-                src="./icon/now-playing.svg"
-                alt=""
-                class="item-icon bg-[#FD9739]"
-              />
-              <span class="item-name">Now Playing</span>
-              <i class="fa-regular fa-angle-right text-gray-700 pr-3"></i>
-            </a>
-          </li>
-        </ul>
-        <p class="appDrawerListItem__title">Tv Show</p>
-        <ul class="mt-4 mb-7">
-          <li class="my-3">
-            <a href="#" class="flex items-center">
-              <img
-                src="./icon/airing-today.svg"
-                alt=""
-                class="item-icon bg-[#CC45AE]"
-              />
-              <span class="item-name">Airing Today</span>
-              <i class="fa-regular fa-angle-right text-gray-700 pr-3"></i>
-            </a>
-          </li>
-          <li class="my-3">
-            <a href="#" class="flex items-center">
-              <img
-                src="./icon/popular.svg"
-                alt=""
-                class="item-icon bg-[#DFCD06]"
-              />
-              <span class="item-name">Popular</span>
-              <i class="fa-regular fa-angle-right text-gray-700 pr-3"></i>
-            </a>
-          </li>
-          <li class="my-3">
-            <a href="#" class="flex items-center">
-              <img
-                src="./icon/top-rated.svg"
-                alt=""
-                class="item-icon bg-[#09C6BA]"
-              />
-              <span class="item-name">Top Rated</span>
-              <i class="fa-regular fa-angle-right text-gray-700 pr-3"></i>
-            </a>
-          </li>
-        </ul>
-        <p class="appDrawerListItem__title">Setting</p>
-        <ul class="mt-4 mb-7">
-          <li class="my-3 flex items-center">
-            <img
-              src="./icon/preference.svg"
-              alt=""
-              class="item-icon bg-[#0069A4]"
-            />
-            <span class="item-name">Preference</span>
-            <i class="fa-regular fa-angle-right text-gray-700 pr-3"></i>
-          </li>
-          <li class="my-3 flex items-center">
-            <img
-              src="./icon/moon-bold.svg"
-              alt=""
-              class="item-icon bg-[#121212]"
-            />
-            <span class="item-name">Dark Mode</span>
-            <div
-              class="p-px h-6 w-16 bg-[#DDE7F0] border border-gray-300 rounded-full flex hover:justify-end hover:bg-green-500"
-            >
-              <div class="h-full aspect-square rounded-full bg-white"></div>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
+      class="h-[80vh] md:h-[97vh] max-h-[805px] w-[250px] overflow-hidden md:w-14 fixed top-1/2 translate-y-[-50%] right-full md:right-auto md:left-2 bg-sky-50/80 backdrop-blur-xl z-50 transition duration-1000 ease-in rounded-2xl hover:actived"
+    ></app-drawer>
+    <!-- bottom bar -->
+    <bottom-bar
+      id="bottomBar"
+      class="fixed bottom-0 left-0 w-full h-[60px] bg-sky-50/50 backdrop-blur-lg flex items-center justify-evenly md:hidden"
+    ></bottom-bar>
+
     <div id="overlay" class="fixed inset-0 z-20" hidden></div>
   </body>
 </html>

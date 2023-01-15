@@ -1,5 +1,7 @@
 /* eslint-disable max-len */
 /* eslint-disable object-curly-newline */
+import SearchInitiator from '../utils/searchInitiator';
+import SearchResultPresenter from '../utils/search-result-presenter';
 import DrawerInitiator from '../utils/drawerInitiator';
 import HideNavbar from '../utils/hideNavbar';
 import BottomBarController from '../utils/bottombar-control';
@@ -7,9 +9,16 @@ import UrlParser from '../routes/url-parser';
 import routes from '../routes/routes';
 
 class App {
-  constructor({ navbar, buttonOpenDrawer, appDrawer, darkSwitch, menuButton, content, overlay, bottombarMenus }) {
+  constructor({ body, navbar, buttonOpenDrawer, searchContainer, searchForm, searchbar, searchResult, btnsubmitandclose, btnOpenSearchbar, appDrawer, darkSwitch, menuButton, content, overlay, bottombarMenus }) {
+    this.body = body;
     this.navbar = navbar;
     this.buttonOpenDrawer = buttonOpenDrawer;
+    this.searchContainer = searchContainer;
+    this.searchForm = searchForm;
+    this.searchbar = searchbar;
+    this.searchResult = searchResult;
+    this.btnsubmitandclose = btnsubmitandclose;
+    this.btnOpenSearchbar = btnOpenSearchbar;
     this.appDrawer = appDrawer;
     this.darkSwitch = darkSwitch;
     this.menuButton = menuButton;
@@ -21,6 +30,23 @@ class App {
   }
 
   initialAppShell() {
+    SearchInitiator.init({
+      body: this.body,
+      searchContainer: this.searchContainer,
+      searchForm: this.searchForm,
+      searchbar: this.searchbar,
+      navbar: this.navbar,
+      btnOpenSearch: this.btnOpenSearchbar,
+      btnSubmitandClose: this.btnsubmitandclose,
+    });
+
+    SearchResultPresenter.init({
+      searchContainer: this.searchContainer,
+      searchForm: this.searchForm,
+      searchbar: this.searchbar,
+      searchResult: this.searchResult,
+    });
+
     DrawerInitiator.init({
       buttonOpenDrawer: this.buttonOpenDrawer,
       appDrawer: this.appDrawer,

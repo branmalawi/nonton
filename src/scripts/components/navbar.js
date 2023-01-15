@@ -1,11 +1,10 @@
-class Navbar extends HTMLElement {
-  connectedCallback() {
-    this.render();
-  }
+// class Navbar extends HTMLElement {
+//   connectedCallback() {
+//     this.render();
+//   }
 
-  render() {
-    this.innerHTML = `
-    
-    `;
-  }
-}
+//   render() {
+//     this.innerHTML = `
+//     `;
+//   }
+// }
