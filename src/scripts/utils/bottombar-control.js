@@ -20,7 +20,7 @@ const BottomBarController = {
     '/': '#/home',
     '/home': '#/home',
     '/favorite': '#/favorite',
-    '/list': '#/list',
+    '/watchlist': '#/watchlist',
   },
 
   _activatingButton(event, buttonMenus) {

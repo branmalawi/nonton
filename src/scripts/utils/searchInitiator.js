@@ -1,5 +1,9 @@
+/* eslint-disable no-multi-assign */
+/* eslint-disable eqeqeq */
+/* eslint-disable no-unused-expressions */
 /* eslint-disable no-param-reassign */
 /* eslint-disable object-curly-newline */
+import UrlParser from '../routes/url-parser';
 
 const SearchInitiator = {
   init({ body, searchContainer, searchForm, searchbar, navbar, btnOpenSearch, btnSubmitandClose }) {
@@ -7,19 +11,26 @@ const SearchInitiator = {
       this.searchActived(body, searchContainer, navbar);
     });
 
-    searchbar.addEventListener('blur', () => {
-      console.log('ok');
-      this.searchbarBlur(searchContainer, navbar, body);
+    window.addEventListener('click', (e) => {
+      if (e.target.id !== 'searchInput' && !e.target.classList.contains('searchResult')) {
+        this.searchbarBlur(searchContainer, navbar, body);
+      }
     });
 
     btnOpenSearch.addEventListener('click', () => {
       searchbar.dispatchEvent(new Event('focus'));
-      // this.searchActived(body, searchContainer, navbar);
     });
 
     btnSubmitandClose.addEventListener('click', () => {
       this.searchUnactiveOrSubmit(body, searchContainer, navbar, searchForm);
     });
+
+    window.onload = window.onhashchange = () => {
+      navbar.classList.add('p-2');
+      const path = UrlParser.parseActiveUrlWithoutCombiner().resource;
+      path == 'detail' ? navbar.classList.add('hidden') : navbar.classList.remove('hidden');
+      console.log(path);
+    };
   },
 
   searchActived(body, searchContainer, navbar) {

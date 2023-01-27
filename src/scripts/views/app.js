@@ -3,13 +3,14 @@
 import SearchInitiator from '../utils/searchInitiator';
 import SearchResultPresenter from '../utils/search-result-presenter';
 import DrawerInitiator from '../utils/drawerInitiator';
+// import InitialColorImage from '../utils/initialColorImage';
 import HideNavbar from '../utils/hideNavbar';
 import BottomBarController from '../utils/bottombar-control';
 import UrlParser from '../routes/url-parser';
 import routes from '../routes/routes';
 
 class App {
-  constructor({ body, navbar, buttonOpenDrawer, searchContainer, searchForm, searchbar, searchResult, btnsubmitandclose, btnOpenSearchbar, appDrawer, darkSwitch, menuButton, content, overlay, bottombarMenus }) {
+  constructor({ body, navbar, buttonOpenDrawer, searchContainer, searchForm, searchbar, searchResult, btnsubmitandclose, btnOpenSearchbar, appDrawer, btnMenuAppDrawer, content, overlay, bottombarMenus }) {
     this.body = body;
     this.navbar = navbar;
     this.buttonOpenDrawer = buttonOpenDrawer;
@@ -20,8 +21,7 @@ class App {
     this.btnsubmitandclose = btnsubmitandclose;
     this.btnOpenSearchbar = btnOpenSearchbar;
     this.appDrawer = appDrawer;
-    this.darkSwitch = darkSwitch;
-    this.menuButton = menuButton;
+    this.btnMenuAppDrawer = btnMenuAppDrawer;
     this.content = content;
     this.overlay = overlay;
     this.bottombarMenus = bottombarMenus;
@@ -40,6 +40,10 @@ class App {
       btnSubmitandClose: this.btnsubmitandclose,
     });
 
+    // InitialColorImage.init({
+    //   main: this.content,
+    // });
+
     SearchResultPresenter.init({
       searchContainer: this.searchContainer,
       searchForm: this.searchForm,
@@ -50,6 +54,7 @@ class App {
     DrawerInitiator.init({
       buttonOpenDrawer: this.buttonOpenDrawer,
       appDrawer: this.appDrawer,
+      btnMenuAppDrawer: this.btnMenuAppDrawer,
       overlay: this.overlay,
     });
 
@@ -65,8 +70,8 @@ class App {
   async renderPage() {
     const url = UrlParser.parseActiveUrlWithCombiner();
     const page = routes[url];
-    // this.content.innerHTML = await page.render();
-    // await page.afterRender();
+    this.content.innerHTML = await page.render();
+    await page.afterRender();
   }
 }
 

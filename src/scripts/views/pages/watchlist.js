@@ -1,12 +1,12 @@
 /* eslint-disable no-empty-function */
-const List = {
+const Watchlist = {
   async render() {
     return `
-    <h1>this is list page</h1>
+    <h1>this is watchlist page</h1>
    `;
   },
 
   async afterRender() { },
 };
 
-export default List;
+export default Watchlist;

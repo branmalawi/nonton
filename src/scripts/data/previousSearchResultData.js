@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 /* eslint-disable max-len */
 /* eslint-disable no-unused-expressions */
 import CONFIG from '../globals/config';
@@ -5,7 +6,6 @@ import CONFIG from '../globals/config';
 const PreviousSearchResultData = {
   add(newValue) {
     const dataPreviousSearch = this.get();
-    console.log(dataPreviousSearch);
     dataPreviousSearch ? this.update(dataPreviousSearch, newValue) : this.push(newValue);
   },
 
@@ -16,8 +16,10 @@ const PreviousSearchResultData = {
   },
 
   update(dataPreviousSearch, newValue) {
-    dataPreviousSearch.unshift(newValue);
-    if (dataPreviousSearch.length > 5) dataPreviousSearch.pop();
+    if (dataPreviousSearch[0].name !== newValue.name) {
+      dataPreviousSearch.unshift(newValue);
+      if (dataPreviousSearch.length > 5) dataPreviousSearch.pop();
+    }
     return localStorage.setItem(CONFIG.LOCALSTORAGE_PREVIOUS_SEARCH_RESULT, JSON.stringify(dataPreviousSearch));
   },
 

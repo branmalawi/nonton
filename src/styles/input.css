@@ -4,20 +4,196 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer components {
+@layer utilities {
   body::-webkit-scrollbar {
     display: none;
   }
+
+  .searchbar-change-size {
+    width: calc(100% - 72px);
+    margin: 0 0 0 auto;
+  }
+
   .search-result::-webkit-scrollbar {
     display: none;
   }
 
   #searchBar.search-actived {
-    @apply drop-shadow-md block;
+    @apply drop-shadow-md block bg-sky-50 dark:bg-slate-800;
+  }
+  #searchContainer.search-actived {
+    @apply drop-shadow-md block bg-sky-50 dark:bg-slate-800;
   }
 
   .search-actived .search-result {
     @apply sm:max-h-60;
+  }
+
+  #appDrawer {
+    transition: 0.1s;
+  }
+  #appDrawer .item-actived {
+    @apply bg-slate-300/70 dark:bg-slate-700/40;
+    border-radius: 12px;
+    position: relative;
+  }
+  #appDrawer .item-actived::before {
+    content: "";
+    display: block;
+    width: 10px;
+    height: 80%;
+    position: absolute;
+    left: -4px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: deeppink;
+    z-index: -1;
+    filter: blur(5px);
+  }
+
+  #appDrawer.app_actived {
+    @apply translate-x-[0%] sm:w-[260px];
+    transition: 0.2s;
+  }
+
+  #appDrawer.app_actived .logo-img {
+    @apply sm:w-[35px];
+    transition: 0.1s;
+    transition-delay: 0.1s;
+  }
+  #appDrawer.app_actived .logo-text {
+    @apply sm:block sm:opacity-100;
+    transition: 0.3s;
+    transition-delay: 0.2s;
+  }
+
+  #appDrawer.app_actived ul li:nth-child(1) {
+    @apply sm:text-xs;
+    transition: 0.1s;
+    transition-delay: 0.2s;
+  }
+  #appDrawer.app_actived ul a {
+    @apply sm:px-3;
+    transition: 0.1s;
+  }
+
+  #appDrawer.app_actived ul p {
+    @apply sm:text-base;
+    transition: 0.1s;
+    transition-delay: 0.2s;
+  }
+
+  #appDrawer.app_actived ul img {
+    @apply sm:mr-3;
+    transition: 0.1s;
+  }
+  #appDrawer.app_actived ul i {
+    @apply sm:inline;
+    transition: 0.1s;
+  }
+
+  #appDrawer.app_actived #darkSwitch {
+    @apply py-2 sm:px-2;
+    transition: 0.1s;
+  }
+  #appDrawer.app_actived #darkSwitch img {
+    @apply w-6;
+    transition: 0.1s;
+  }
+  #appDrawer.app_actived #darkSwitch p {
+    @apply inline-block;
+    transition: 0.1s;
+  }
+
+  #appDrawer .appDrawerListItem::-webkit-scrollbar {
+    display: none;
+  }
+
+  #mainContent img::before {
+    content: attr(alt);
+    display: block;
+    visibility: hidden;
+  }
+
+  .main-change-size {
+    padding-left: calc(100% - (100% - 72px));
+  }
+
+  a {
+    -webkit-tap-hightlight-color: rgba(0, 0, 0, 0);
+  }
+
+  movie-item h2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
+  .rate-progress {
+    @apply absolute aspect-square rounded-full shadow-md shadow-black/40 before:block before:absolute before:w-[80%] before:aspect-square before:rounded-full before:bottom-1/2 before:right-1/2 before:translate-y-1/2 before:translate-x-1/2;
+  }
+
+  .image-item {
+    @apply min-w-[32%] min-[470px]:min-w-[23.5%] min-[700px]:min-w-[18.8%] min-[890px]:min-w-[15.8%] min-[1140px]:min-w-[13.4%] min-[1310px]:min-w-[11.6%];
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    @apply sm:bg-transparent sm:h-2;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply sm:bg-gray-400/70 sm:rounded-full w-10;
+  }
+
+  #latestTrailer {
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    background-position: center !important;
+  }
+
+  #latestTrailer .swiper-slide-active > .title-name {
+    @apply inline-block text-lg font-semibold text-center mt-1 text-sky-50 w-full;
+  }
+
+  #liked > div {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 110px 10px repeat(2, 1fr);
+    grid-template-rows: 5% 20% 10% 40% 20% 5%;
+  }
+
+  #liked .item-image {
+    grid-area: 1/1/-1/2;
+  }
+  #liked h2 {
+    grid-area: 2/3/3/-1;
+  }
+  #liked .item-rate {
+    grid-area: 3/3/4/-1;
+  }
+  #liked .item-overview {
+    grid-area: 4/3/5/-1;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+  #liked .watchlist-mark {
+    grid-area: 5/3/6/4;
+  }
+  #liked .favorite-mark {
+    grid-area: 5/4/6/-1;
+  }
+
+  .genre {
+    @apply my-3 sm:my-2 mx-[2px];
+  }
+  .genre > label {
+    @apply py-2 sm:py-1 px-3 mt-2 rounded-full bg-slate-200 dark:bg-slate-500;
+  }
+  .genre > input[type="checkbox"]:checked + label {
+    @apply bg-gradient-to-br from-pink-400 dark:from-pink-600 to-fuchsia-400 dark:to-fuchsia-600 text-sky-50;
   }
 
   #bottomBar img,
@@ -26,7 +202,7 @@
   }
 
   .bottom-bar__active {
-    @apply flex items-center justify-center bg-gradient-to-br from-pink-400 to-fuchsia-400 px-2 py-[5px] rounded-full;
+    @apply flex items-center justify-center bg-gradient-to-br from-pink-400 dark:from-pink-600 to-fuchsia-400 dark:to-fuchsia-600 px-2 py-[5px] rounded-full;
     pointer-events: none;
   }
 
@@ -38,70 +214,9 @@
     @apply block text-base text-sky-50 px-1 tracking-wider font-medium;
   }
 
-  .appDrawerListItem::-webkit-scrollbar {
-    display: none;
-  }
-
-  .appDrawerListItem {
-    height: calc(100% - 50px);
-  }
-
-  .appDrawer-actived {
-    @apply translate-x-[calc(100%+8px)];
-  }
-
-  .appDrawerListItem__title {
-    @apply ml-1 font-medium text-gray-700 text-sm;
-  }
-
-  .appDrawerListItem .item-icon {
-    @apply w-[35px] h-[35px] p-2 rounded-lg;
-  }
-  .appDrawerListItem .item-name {
-    @apply text-base font-medium ml-4 w-full;
-  }
-  .appDrawerListItem i {
-    @apply text-sm;
-  }
-}
-
-@layer utilities {
-  #appDrawer {
-    transition: 0.4s;
-  }
-  .actived {
-    @apply w-[250px];
-  }
-  .actived .appDrawerHead {
-    @apply px-3;
-  }
-  .actived .logo-text {
-    @apply h-[37px];
-    transition: 0.1s;
-    transition-delay: 0.2s;
-  }
-  .actived .stroke {
-    @apply hidden;
-  }
-  .actived .appDrawerListItem__title {
-    @apply inline;
-    transition: 0.1s;
-    transition-delay: 0.7s;
-  }
-  .actived .appDrawerListItem .item-name {
-    @apply inline;
-  }
-  .actived .appDrawerListItem i {
-    @apply inline;
-    transition: 0.1s;
-    transition-delay: 0.9s;
-  }
-  .actived .toggle-dark {
-    @apply w-16 flex;
-  }
-
-  .main-change-size {
-    width: calc(100% - 72px);
-    margin: 0 0 0 auto;
+  .bg-large {
+    background-size: contain;
+    background-position: center top;
+    background-repeat: no-repeat;
   }
 }

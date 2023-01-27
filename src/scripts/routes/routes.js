@@ -1,12 +1,16 @@
 import Home from '../views/pages/home';
-import List from '../views/pages/list';
+import Watchlist from '../views/pages/watchlist';
 import Favorite from '../views/pages/favorite';
+import Detail from '../views/pages/detail';
+import Search from '../views/pages/search';
 
 const routes = {
   '/': Home, // default page
   '/home': Home,
-  '/list': List,
+  '/watchlist': Watchlist,
   '/favorite': Favorite,
+  '/detail/:verb/:id': Detail,
+  '/search/:verb/:id': Search,
   // '/detail/:id': detail,
 };
 

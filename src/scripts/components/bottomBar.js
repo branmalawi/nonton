@@ -6,19 +6,19 @@ class BottomBar extends HTMLElement {
   render() {
     this.innerHTML = `
     <a href="#/home" class="" tabindex="0">
-      <img src="./icon/home.svg" class="h-7 mx-1" />
+      <img src="./icon/home.svg" class="h-7 mx-1 brightness-[20%] dark:brightness-100" />
       <p class="hidden">HOME</p>
     </a>
     <a href="#/favorite" class="" tabindex="0">
-      <img src="./icon/favorite.svg" class="h-7 mx-1" />
+      <img src="./icon/favorite.svg" class="h-7 mx-1 brightness-[20%] dark:brightness-100" />
       <p class="hidden">LIKE</p>
     </a>
-    <a href="#/list" class="" tabindex="0">
-      <img src="./icon/watchlist.svg" class="h-7 mx-1" />
+    <a href="#/watchlist" class="" tabindex="0">
+      <img src="./icon/watchlist.svg" class="h-7 mx-1 brightness-[20%] dark:brightness-100" />
       <p class="hidden">LIST</p>
     </a>
-    <button id="openSearchbar" class="">
-      <img src="./icon/search.svg" class="h-7 mx-1" />
+    <button class="buttonDrawer">
+      <img src="./icon/more.svg" class="h-7 mx-1 brightness-[20%] dark:brightness-100" />
     </button>
     `;
   }

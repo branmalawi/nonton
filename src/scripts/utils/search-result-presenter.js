@@ -1,8 +1,11 @@
+/* eslint-disable max-len */
+/* eslint-disable no-shadow */
 /* eslint-disable eqeqeq */
 /* eslint-disable no-param-reassign */
 /* eslint-disable object-curly-newline */
 import SearchResult from '../data/search-result';
 import PreviousSearchResultData from '../data/previousSearchResultData';
+import UrlParser from '../routes/url-parser';
 import { createResultSearchTemplate, createPreviousResultSearchTemplate } from '../views/templates/template-creator';
 
 const SearchResultPresenter = {
@@ -25,7 +28,10 @@ const SearchResultPresenter = {
 
     searchForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      PreviousSearchResultData.add(searchbar.value);
+      window.location.hash = `#/search/multi/${searchbar.value}`;
+    });
+
+    window.addEventListener('hashchange', () => {
       this.searchResultContainer.innerHTML = '';
       searchContainer.classList.remove('search-actived');
       searchbar.value = '';
@@ -60,7 +66,9 @@ const SearchResultPresenter = {
   },
 
   pushNewPreviousSearchResultData() {
-    // ketika submit
+    const SearchResult = UrlParser.parseActiveUrlWithoutCombiner();
+    // console.log({ type: SearchResult.verb, name: SearchResult.id });
+    PreviousSearchResultData.add({ type: SearchResult.verb, name: decodeURIComponent(SearchResult.id) });
   },
 
   renderSearchResult() {
