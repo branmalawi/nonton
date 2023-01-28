@@ -131,7 +131,7 @@
   }
 
   .rate-progress {
-    @apply absolute aspect-square rounded-full shadow-md shadow-black/40 before:block before:absolute before:w-[80%] before:aspect-square before:rounded-full before:bottom-1/2 before:right-1/2 before:translate-y-1/2 before:translate-x-1/2;
+    @apply aspect-square rounded-full shadow-md shadow-black/40 before:block before:absolute before:w-[80%] before:aspect-square before:rounded-full before:bottom-1/2 before:right-1/2 before:translate-y-1/2 before:translate-x-1/2;
   }
 
   .image-item {
@@ -214,9 +214,19 @@
     @apply block text-base text-sky-50 px-1 tracking-wider font-medium;
   }
 
-  .bg-large {
-    background-size: contain;
-    background-position: center top;
-    background-repeat: no-repeat;
+  .detail__container {
+    display: grid;
+    grid-template-columns: 5px 35% 1fr 5px;
+    grid-template-rows: auto 1fr;
+  }
+
+  .detail__container .detail__image {
+    grid-area: 1/2/2/3;
+  }
+  .detail__container .detail__name {
+    grid-area: 1/3/2/4;
+  }
+  .detail__container .detail__ovr {
+    grid-area: 2/1/3/5;
   }
 }
