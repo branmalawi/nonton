@@ -16,8 +16,8 @@ const InitialColorImage = {
     };
     const colorData = await color();
     return {
-      bgColor: colorData[2],
-      textColor: this.checkContrast(colorData[2]),
+      bgColor: colorData[1],
+      textColor: this.checkContrast(colorData[1]),
     };
   },
 

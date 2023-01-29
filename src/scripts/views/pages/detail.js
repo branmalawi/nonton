@@ -1,3 +1,7 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-param-reassign */
+/* eslint-disable max-len */
+/* eslint-disable quote-props */
 import NontonDatabase from '../../data/nonton-database';
 import UrlParser from '../../routes/url-parser';
 import InitialColorImage from '../../utils/initialColorImage';
@@ -7,9 +11,7 @@ const Detail = {
     return `
     <div id="detail" class="bg-no-repeat bg-top bg-[length:600px] sm:bg-cover pt-52 sm:pt-0 pb-1 sm:pb-0">
       <div class="w-full backdrop-blur-xl sm:backdrop-blur-0 rounded-t-3xl sm:rounded-t-none h-fit detail__container py-[6px] sm:p-5 md:p-7 gap-3 md:gap-8">
-        <div class="detail__image mt-[-60%] sm:mt-0 rounded-2xl overflow-hidden w-full aspect-[2/3]">
-          <img src="./img/poster-11.webp" class=""/>
-        </div>
+        <div class="detail__image mt-[-60%] sm:mt-0 rounded-2xl overflow-hidden w-full aspect-[2/3] bg-slate-300"></div>
         <div class="h-fit w-full detail__name">
           <h2 class="sm:text-[38] sm:leading-8 md:text-[40px] md:leading-[50px] font-semibold md:font-bold">Thor Ragnarok</h2>
           <p class="text-xs font-normal md:text-base"><span>24 Oct, 2017</span><span> &bull; </span><span>2h 11m</span></p>
@@ -70,8 +72,21 @@ const Detail = {
     console.log(dataColor);
     const warna = dataColor.bgColor.join(',');
 
-    const image = document.querySelector('.detail__image > img');
-    image.src = `https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${detailData.poster_path}`;
+    const image = document.querySelector('.detail__image');
+    image.innerHTML = `<img src='https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${detailData.poster_path}' alt='bagus'>`;
+
+    const title = document.querySelector('.detail__name > h2');
+    title.innerHTML = detailData.title || detailData.name;
+
+    const time = document.querySelector('.detail__name p');
+    time.innerHTML = this.generateTime({
+      date: detailData.release_date || detailData.first_air_date,
+      runtime: detailData.runtime || detailData.episode_run_time[0],
+    });
+    // about[0].innerHTML = this.generateReleaseDate(detailData.release_date || detailData.first_air_date);
+    // about[0].innerHTML = this.generateReleaseDate(detailData.runtime
+    //   || detailData.first_air_date);
+
 
     detail.innerHTML += `<style>
     #detail {
@@ -103,6 +118,32 @@ const Detail = {
       
     }
   </style> `;
+  },
+
+  generateTime({ date, runtime }) {
+    let dataDate = '';
+    const mountName = {
+      '01': 'Jan',
+      '02': 'Feb',
+      '03': 'Mar',
+      '04': 'Apr',
+      '05': 'May',
+      '06': 'Jun',
+      '07': 'Jul',
+      '08': 'Aug',
+      '09': 'Sep',
+      '10': 'Oct',
+      '11': 'Nov',
+      '12': 'Dec',
+    };
+
+    date = date.split('-');
+
+    dataDate += `<span>${date[2]} ${mountName[date[1]]}, ${date[0]}</span>`;
+    if (runtime) {
+      dataDate += ` <span> &bull; </span> <span>${Math.floor(runtime / 60)}h ${runtime % 60}m</span>`;
+    }
+    return dataDate;
   },
 };
 
