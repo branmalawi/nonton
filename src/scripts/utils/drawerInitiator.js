@@ -11,7 +11,6 @@ const DrawerInitiator = {
         appDrawer.classList.toggle('app_actived');
         overlay.classList.toggle('bg-black/70');
         overlay.classList.toggle('hidden');
-        console.log(overlay);
       });
     });
 
@@ -31,7 +30,6 @@ const DrawerInitiator = {
 
     window.addEventListener('hashchange', () => {
       const url = UrlParser.parseActiveUrlForAppDrawer();
-      console.log(url);
       this._activatingButton(this.route[url], btnMenuAppDrawer);
     });
     window.addEventListener('load', () => {
@@ -56,7 +54,6 @@ const DrawerInitiator = {
 
   _activatingButton(event, btnMenuAppDrawer) {
     btnMenuAppDrawer.forEach((buttonMenu) => {
-      console.log(buttonMenu.getAttribute('href'));
       buttonMenu.getAttribute('href') == event ? this._printActiveButton(buttonMenu) : this._printUnactiveButton(buttonMenu);
     });
   },

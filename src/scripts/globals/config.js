@@ -1,6 +1,7 @@
 const CONFIG = {
   KEY: 'cfb7d17e50d625993f86e5de6a708481',
   BASE_URL: 'https://api.themoviedb.org/3/',
+  CACHE_NAME: 'nonton-test',
   SMALL_POSTER_URL: 'https://image.tmdb.org/t/p/w440_and_h660_face',
   SMALL_BACKDROP_URL: 'https://image.tmdb.org/t/p/w500_and_h282_face',
   MID_POSTER_URL: 'https://image.tmdb.org/t/p/w700',

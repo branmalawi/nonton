@@ -5,6 +5,7 @@
 import NontonDatabase from '../../data/nonton-database';
 import UrlParser from '../../routes/url-parser';
 import InitialColorImage from '../../utils/initialColorImage';
+import dataTest from '../../utils/testData';
 
 const Detail = {
   async render() {
@@ -63,6 +64,7 @@ const Detail = {
   },
 
   async afterRender() {
+    console.log(dataTest.nama);
     const detailSrc = UrlParser.parseActiveUrlWithoutCombiner();
     const detailData = await NontonDatabase.detail(detailSrc.verb, detailSrc.id);
     console.log(detailData);

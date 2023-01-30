@@ -113,29 +113,6 @@ const Home = {
     const recommendedData = this.combineDataSort(recommendedMovie, recommendedTv);
     console.log(recommendedData);
 
-    const topRatedMovie = await NontonDatabase.topRated('movie');
-    const topRatedTv = await NontonDatabase.topRated('tv');
-    const topRatedData = this.combineDataSort(topRatedMovie, topRatedTv);
-    console.log(this.combineDataSort(topRatedMovie, topRatedTv));
-
-    const popularMovie = await NontonDatabase.popular('movie');
-    const popularTv = await NontonDatabase.popular('tv');
-    const popularData = this.combineDataSort(popularMovie, popularTv);
-    console.log(this.combineDataSort(popularMovie, popularTv));
-
-    const freeToWatchMovie = await NontonDatabase.freeToWatch('movie', genreMovie);
-    const freeToWatchTv = await NontonDatabase.freeToWatch('tv', genreTv);
-    const freeToWatchData = this.combineDataSort(freeToWatchMovie, freeToWatchTv);
-    console.log(this.combineDataSort(freeToWatchMovie, freeToWatchTv));
-
-    const latestMovie = await NontonDatabase.latest('movie', genreMovie, date);
-    const latestTv = await NontonDatabase.latest('tv', genreTv, date);
-    const latesData = this.combineDataRandom(latestMovie, latestTv);
-    console.log(this.combineDataRandom(latestMovie, latestTv));
-
-    const trendingData = await NontonDatabase.trending();
-    console.log(trendingData);
-
     const recommendedContainer = document.querySelector('#recommended .swiper-wrapper');
     recommendedContainer.innerHTML = '';
     recommendedData.forEach((recommended) => {
@@ -143,17 +120,53 @@ const Home = {
     });
     this.renderSwiperRecommended();
 
+    const popularMovie = await NontonDatabase.popular('movie');
+    const popularTv = await NontonDatabase.popular('tv');
+    const popularData = this.combineDataSort(popularMovie, popularTv);
+    console.log(this.combineDataSort(popularMovie, popularTv));
+
     const popularContainer = document.querySelector('#popular > div');
     popularContainer.innerHTML = '';
     popularData.forEach((popular) => {
       popularContainer.innerHTML += createMovieItemTemplate(popular);
     });
 
+    const topRatedMovie = await NontonDatabase.topRated('movie');
+    const topRatedTv = await NontonDatabase.topRated('tv');
+    const topRatedData = this.combineDataSort(topRatedMovie, topRatedTv);
+    console.log(this.combineDataSort(topRatedMovie, topRatedTv));
+
     const topRatedContainer = document.querySelector('#topRated > div');
     topRatedContainer.innerHTML = '';
     topRatedData.forEach((topRated) => {
       topRatedContainer.innerHTML += createMovieItemTemplate(topRated);
     });
+
+    const trendingData = await NontonDatabase.trending();
+    console.log(trendingData);
+
+    const trendingContainer = document.querySelector('#trending > div');
+    trendingContainer.innerHTML = '';
+    trendingData.forEach((trending) => {
+      trendingContainer.innerHTML += createMovieItemTemplate(trending);
+    });
+
+    const freeToWatchMovie = await NontonDatabase.freeToWatch('movie', genreMovie);
+    const freeToWatchTv = await NontonDatabase.freeToWatch('tv', genreTv);
+    const freeToWatchData = this.combineDataSort(freeToWatchMovie, freeToWatchTv);
+    console.log(this.combineDataSort(freeToWatchMovie, freeToWatchTv));
+
+    const freeToWatchContainer = document.querySelector('#freeToWatch > div');
+    freeToWatchContainer.innerHTML = '';
+    freeToWatchData.forEach((freeToWatch) => {
+      freeToWatchContainer.innerHTML += createMovieItemTemplate(freeToWatch);
+    });
+
+    const latestMovie = await NontonDatabase.latest('movie', genreMovie, date);
+    const latestTv = await NontonDatabase.latest('tv', genreTv, date);
+    const latesData = this.combineDataRandom(latestMovie, latestTv);
+    console.log(this.combineDataRandom(latestMovie, latestTv));
+
 
     const latestTrailer = document.querySelector('#latestTrailer');
     latestTrailer.classList.remove('animate-pulse');
@@ -165,18 +178,6 @@ const Home = {
       latestTrailerContainer.innerHTML += createLatestItemTemplate(latest);
     });
     this.renderSwiperLatesTrailer(latestTrailer);
-
-    const trendingContainer = document.querySelector('#trending > div');
-    trendingContainer.innerHTML = '';
-    trendingData.forEach((trending) => {
-      trendingContainer.innerHTML += createMovieItemTemplate(trending);
-    });
-
-    const freeToWatchContainer = document.querySelector('#freeToWatch > div');
-    freeToWatchContainer.innerHTML = '';
-    freeToWatchData.forEach((freeToWatch) => {
-      freeToWatchContainer.innerHTML += createMovieItemTemplate(freeToWatch);
-    });
   },
 
   combineDataRandom(movie, tv) {

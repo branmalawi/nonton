@@ -6,6 +6,8 @@ import 'regenerator-runtime';
 import 'lazysizes';
 import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 import '../styles/style.css';
+import dataTest from './utils/testData';
+import swRegister from './utils/sw-register';
 import './components/bottomBar';
 import './components/appDrawer';
 import './components/recommended-list';
@@ -51,7 +53,9 @@ window.addEventListener('hashchange', () => {
 });
 
 window.addEventListener('load', async () => {
+  dataTest.nama = 'malawi';
   app.renderPage();
+  swRegister();
   // await swRegister();
 });
 

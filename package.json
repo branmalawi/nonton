@@ -6,7 +6,8 @@
   "scripts": {
     "start-dev": "webpack serve --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
-    "style": "tailwindcss -i ./src/styles/input.css -o ./src/styles/style.css --watch"
+    "style": "tailwindcss -i ./src/styles/input.css -o ./src/styles/style.css --watch",
+    "server": "http-server dist"
   },
   "keywords": [],
   "author": "bran malawi",
@@ -22,6 +23,7 @@
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.26.0",
     "html-webpack-plugin": "^5.5.0",
+    "http-server": "^14.1.1",
     "mini-css-extract-plugin": "^2.7.2",
     "tailwindcss": "^3.2.4",
     "webpack": "^5.75.0",

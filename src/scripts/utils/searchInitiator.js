@@ -29,7 +29,6 @@ const SearchInitiator = {
       navbar.classList.add('p-2');
       const path = UrlParser.parseActiveUrlWithoutCombiner().resource;
       path == 'detail' ? navbar.classList.add('hidden') : navbar.classList.remove('hidden');
-      console.log(path);
     };
   },
 
