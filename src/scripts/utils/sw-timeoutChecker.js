@@ -50,6 +50,7 @@ const swTimeoutChecker = {
     this.registerTimeout();
     if (this.checkWeekTimeout()) {
       serviceWorker.postMessage('remove weekly cache');
+      this.setTimeoutWeek();
     }
 
     if (this.checkMonthTimeout()) {

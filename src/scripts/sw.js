@@ -31,7 +31,7 @@ self.addEventListener('install', (event) => {
 
 self.addEventListener('activate', (event) => {
   console.log('service worker actived');
-  event.waitUntil(CacheManager.deleteCache());
+  event.waitUntil(CacheManager.deleteOlderCacheName());
 });
 
 self.addEventListener('fetch', (event) => {

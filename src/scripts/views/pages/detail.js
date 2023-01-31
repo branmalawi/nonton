@@ -1,3 +1,4 @@
+/* eslint-disable no-return-assign */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-param-reassign */
 /* eslint-disable max-len */
@@ -88,6 +89,9 @@ const Detail = {
     // about[0].innerHTML = this.generateReleaseDate(detailData.release_date || detailData.first_air_date);
     // about[0].innerHTML = this.generateReleaseDate(detailData.runtime
     //   || detailData.first_air_date);
+    const genres = document.querySelector('.detail__name div');
+    genres.innerHTML = '';
+    detailData.genres.map((genre) => genres.innerHTML += `<a href="#" class="px-3 py-0.5 rounded-full block text-xs md:text-sm font-normal border-[1.5px] whitespace-nowrap">${genre.name}</a>`);
 
     detail.innerHTML += `<style>
     #detail {

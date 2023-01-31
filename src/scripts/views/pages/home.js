@@ -167,7 +167,6 @@ const Home = {
     const latesData = this.combineDataRandom(latestMovie, latestTv);
     console.log(this.combineDataRandom(latestMovie, latestTv));
 
-
     const latestTrailer = document.querySelector('#latestTrailer');
     latestTrailer.classList.remove('animate-pulse');
     latestTrailer.classList.remove('h-72');
@@ -189,6 +188,7 @@ const Home = {
   },
 
   renderSwiperRecommended() {
+    // eslint-disable-next-line no-unused-vars
     const recommended = new Swiper('.recommended', {
       slidesPerView: 1,
       direction: 'horizontal',

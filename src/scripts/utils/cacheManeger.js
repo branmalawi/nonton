@@ -1,3 +1,4 @@
+/* eslint-disable new-cap */
 /* eslint-disable max-len */
 import CONFIG from '../globals/config';
 
@@ -20,6 +21,9 @@ const CacheManager = {
 
   async deleteOlderCacheName() {
     const cache = await caches.keys();
+    // cache.forEach((key) => {
+    //   console.log(key.created);
+    // });
     cache.filter((name) => name !== CONFIG.CACHE_NAME).map((filteredName) => caches.delete(filteredName));
   },
 
@@ -60,6 +64,8 @@ const CacheManager = {
   async _addToCache(request, response) {
     const cache = await this._openCache();
     cache.put(request, response);
+    cache.created = 10;
+    // console.log(cache);
   },
 
   async _openCache() {
