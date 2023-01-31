@@ -15,7 +15,7 @@ class PersonItem extends HTMLElement {
     this.innerHTML = `
       <a href="#/about/${this.type}/${this.id}">
         <div class="poster aspect-[2/3] rounded-xl overflow-hidden relative flex items-center justify-center">
-          <img data-src="${CONFIG.LARGE_POSTER_URL}${this.src}" src="./logo/nontonn.svg" alt="${this.title} poster" class="h-full lazyload"/>
+          <img data-src="${CONFIG.LARGE_POSTER_URL}${this.src}" src="./logo/nonton.svg" alt="${this.title} poster" class="h-full lazyload"/>
           <rate-bar value="${this.rate}" class="absolute rate-progress w-[27%] top-0 right-0 translate-x-[-20%] translate-y-[20%] bg-gray-700/50 backdrop-blur before:bg-gray-800 text-[10px] text-sky-50"></rate-bar>
         </div>
       </a>

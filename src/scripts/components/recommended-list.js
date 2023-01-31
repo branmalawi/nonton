@@ -29,7 +29,7 @@ class RecommendedList extends HTMLElement {
     this.innerHTML = `
       <a href="#/detail/${this.type}/${this.id}">
         <div class="item-image relative rounded-xl overflow-hidden aspect-video flex items-center justify-center bg-slate-300 dark:bg-gray-600">
-        <img data-src="${CONFIG.LARGE_BACKDROP_URL}${this.src}" src="./logo/nontonn.svg"  class="brightness-90 lazyload"/>
+        <img data-src="${CONFIG.LARGE_BACKDROP_URL}${this.src}" src="./logo/nonton.svg"  class="brightness-90 lazyload"/>
           <div class="item-rate absolute bottom-[10px] right-[10px] flex h-fit justify-between items-center px-2 text-base md:text-lg">${this.generateRating(this.rate)}</div>
         </div>
       </a>
@@ -41,7 +41,7 @@ class RecommendedList extends HTMLElement {
 
     const img = this.querySelector('img');
     if (!this.src) {
-      img.setAttribute('data-src', './logo/nontonn.svg');
+      img.setAttribute('data-src', './logo/nonton.svg');
       console.log(null);
     }
   }

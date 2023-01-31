@@ -89,7 +89,6 @@ const Detail = {
     // about[0].innerHTML = this.generateReleaseDate(detailData.runtime
     //   || detailData.first_air_date);
 
-
     detail.innerHTML += `<style>
     #detail {
       background-image : url('https://www.themoviedb.org/t/p/w1066_and_h600_bestv2/${detailData.backdrop_path}');

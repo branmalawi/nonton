@@ -8,6 +8,7 @@ import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 import '../styles/style.css';
 import dataTest from './utils/testData';
 import swRegister from './utils/sw-register';
+import swTimeoutChecker from './utils/sw-timeoutChecker';
 import './components/bottomBar';
 import './components/appDrawer';
 import './components/recommended-list';
@@ -56,6 +57,7 @@ window.addEventListener('load', async () => {
   dataTest.nama = 'malawi';
   app.renderPage();
   swRegister();
+  swTimeoutChecker.swCheckTimeout();
   // await swRegister();
 });
 
