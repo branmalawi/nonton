@@ -25,7 +25,7 @@ const createMovieItemTemplate = (result) => `
   </movie-item>
   `;
 
-const createLatestItemTemplate = (result) => `
+const createTrendingTrailerItemTemplate = (result) => `
   <latest-item
     class="swiper-slide max-w-[95%] md:max-w-[36%] rounded-2xl"
     data-src="${result.backdrop_path || ''}"
@@ -54,7 +54,7 @@ const createPreviousResultSearchTemplate = (result) => `
 export {
   createRecommendedItemTemplate,
   createMovieItemTemplate,
-  createLatestItemTemplate,
+  createTrendingTrailerItemTemplate,
   createResultSearchTemplate,
   createPreviousResultSearchTemplate,
 };

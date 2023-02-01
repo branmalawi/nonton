@@ -51,6 +51,7 @@ darkSwitch.addEventListener('click', () => {
 
 window.addEventListener('hashchange', () => {
   app.renderPage();
+  window.scrollTo(0, 0);
 });
 
 window.addEventListener('load', async () => {

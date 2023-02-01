@@ -874,6 +874,14 @@ video {
   height: 18rem;
 }
 
+.h-8{
+  height: 2rem;
+}
+
+.h-1{
+  height: 0.25rem;
+}
+
 .max-h-\[805px\]{
   max-height: 805px;
 }
@@ -977,6 +985,34 @@ video {
 
 .w-\[45\%\]{
   width: 45%;
+}
+
+.w-\[40\%\]{
+  width: 40%;
+}
+
+.w-\[350\%\]{
+  width: 350%;
+}
+
+.w-\[260\%\]{
+  width: 260%;
+}
+
+.w-\[100px\]{
+  width: 100px;
+}
+
+.w-\[150px\]{
+  width: 150px;
+}
+
+.w-\[90px\]{
+  width: 90px;
+}
+
+.w-\[140px\]{
+  width: 140px;
 }
 
 .min-w-\[340px\]{
@@ -1295,6 +1331,11 @@ video {
 
 .bg-slate-400\/70{
   background-color: rgb(148 163 184 / 0.7);
+}
+
+.bg-slate-400{
+  --tw-bg-opacity: 1;
+  background-color: rgb(148 163 184 / var(--tw-bg-opacity));
 }
 
 .bg-gradient-to-r{
@@ -1945,13 +1986,13 @@ movie-item h2 {
   }
 }
 
-#latestTrailer {
+#trendingTrailer {
   background-repeat: no-repeat !important;
   background-size: cover !important;
   background-position: center !important;
 }
 
-#latestTrailer .swiper-slide-active > .title-name{
+#trendingTrailer .swiper-slide-active > .title-name{
   margin-top: 0.25rem;
   display: inline-block;
   width: 100%;
@@ -2208,6 +2249,11 @@ movie-item h2 {
   background-color: rgb(107 114 128 / var(--tw-bg-opacity));
 }
 
+.dark .dark\:bg-slate-400{
+  --tw-bg-opacity: 1;
+  background-color: rgb(148 163 184 / var(--tw-bg-opacity));
+}
+
 .dark .dark\:text-slate-300{
   --tw-text-opacity: 1;
   color: rgb(203 213 225 / var(--tw-text-opacity));
@@ -2307,6 +2353,10 @@ movie-item h2 {
 
   .sm\:w-\[32\%\]{
     width: 32%;
+  }
+
+  .sm\:w-\[30\%\]{
+    width: 30%;
   }
 
   .sm\:max-w-sm{
@@ -2455,6 +2505,18 @@ movie-item h2 {
 
   .md\:h-0{
     height: 0px;
+  }
+
+  .md\:h-6{
+    height: 1.5rem;
+  }
+
+  .md\:h-2{
+    height: 0.5rem;
+  }
+
+  .md\:h-5{
+    height: 1.25rem;
   }
 
   .md\:w-\[40\%\]{

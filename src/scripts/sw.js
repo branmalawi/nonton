@@ -41,9 +41,11 @@ self.addEventListener('fetch', (event) => {
 self.addEventListener('message', (event) => {
   // console.log(`serbice woler received message: ${event.data}`);
   if (event.data == 'remove weekly cache') {
+    console.log(event.data == 'remove weekly cache');
     CacheManager.deleteWeeklyCache();
   }
   if (event.data == 'remove monthly cache') {
+    console.log(event.data == 'remove monthly cache');
     CacheManager.deleteMontlyCache();
   }
 });

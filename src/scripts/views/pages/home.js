@@ -1,13 +1,14 @@
+/* eslint-disable no-return-assign */
+/* eslint-disable no-shadow */
 /* eslint-disable max-len */
 /* eslint-disable import/no-unresolved */
 /* eslint-disable no-empty-function */
-// import RestaurantSource from '../../data/restaurant-source';
 import Swiper from 'swiper/bundle';
 import 'swiper/css/bundle';
 import CONFIG from '../../globals/config';
 import NontonDatabase from '../../data/nonton-database';
 import CheckedGenres from '../../data/checkedGenre';
-import { createRecommendedItemTemplate, createMovieItemTemplate, createLatestItemTemplate } from '../templates/template-creator';
+import { createRecommendedItemTemplate, createMovieItemTemplate, createTrendingTrailerItemTemplate } from '../templates/template-creator';
 // import SweetAlert from '../../utils/swal-initiator';
 // import { createCatalogueRestoItemTemplate } from '../templates/template-creator';
 
@@ -31,8 +32,8 @@ const Home = {
       </div>
     </div>
   </section>
-  <section id="popular" class="pb-2">
-    <h1 class="text-xl text-bold px-3">Popular</h1>
+  <section id="trending" class="pb-2 ">
+    <h1 class="text-xl text-bold px-3">Trending</h1>
     <div class="p-2 pb-6 flex gap-[2%] min-[700px]:gap[1.5%] min-[890px]:gap-[1%] overflow-y-hidden custom-scrollbar">
       <image-item-skeleton class="image-item animate-pulse"></image-item-skeleton>
       <image-item-skeleton class="image-item animate-pulse"></image-item-skeleton>
@@ -57,30 +58,17 @@ const Home = {
       <image-item-skeleton class="image-item animate-pulse"></image-item-skeleton>
     </div>
   </section>
-  <section id="latestTrailer" class="py-3 bg-cover bg-center w-full bg-slate-300 dark:bg-gray-500 animate-pulse h-72 mb-4">
-    <h1 class="text-xl text-bold px-3 text-sky-50">Latest Trailer</h1>
-    <div class="swiper latest mt-4 mb-6">
+  <section id="trendingTrailer" class="py-3 bg-cover bg-center w-full bg-slate-300 dark:bg-gray-500 animate-pulse h-72 mb-4">
+    <h1 class="text-xl text-bold px-3 text-sky-50">Trending Trailer</h1>
+    <div class="swiper trendingTrailer mt-4 mb-6">
       <div class="swiper-wrapper">
       </div>
       <div class="swiper-button-next text-white"></div>
       <div class="swiper-button-prev text-white"></div>
     </div>
   </section>
-  <section id="trending" class="pb-2 ">
-    <h1 class="text-xl text-bold px-3">Trending</h1>
-    <div class="p-2 pb-6 flex gap-[2%] min-[700px]:gap[1.5%] min-[890px]:gap-[1%] overflow-y-hidden custom-scrollbar">
-      <image-item-skeleton class="image-item animate-pulse"></image-item-skeleton>
-      <image-item-skeleton class="image-item animate-pulse"></image-item-skeleton>
-      <image-item-skeleton class="image-item animate-pulse"></image-item-skeleton>
-      <image-item-skeleton class="image-item animate-pulse"></image-item-skeleton>
-      <image-item-skeleton class="image-item animate-pulse"></image-item-skeleton>
-      <image-item-skeleton class="image-item animate-pulse"></image-item-skeleton>
-      <image-item-skeleton class="image-item animate-pulse"></image-item-skeleton>
-      <image-item-skeleton class="image-item animate-pulse"></image-item-skeleton>
-    </div>
-  </section>
-  <section id="freeToWatch" class="pb-2">
-    <h1 class="text-xl text-bold px-3">Free To Watch</h1>
+  <section id="popular" class="pb-2">
+    <h1 class="text-xl text-bold px-3">Popular</h1>
     <div class="p-2 pb-6 flex gap-[2%] min-[700px]:gap[1.5%] min-[890px]:gap-[1%] overflow-y-hidden custom-scrollbar">
       <image-item-skeleton class="image-item animate-pulse"></image-item-skeleton>
       <image-item-skeleton class="image-item animate-pulse"></image-item-skeleton>
@@ -106,77 +94,40 @@ const Home = {
       return;
     }
 
-    const date = new Date();
-
-    const recommendedMovie = await NontonDatabase.recommended('movie', genreMovie, date);
-    const recommendedTv = await NontonDatabase.recommended('tv', genreTv, date);
-    const recommendedData = this.combineDataSort(recommendedMovie, recommendedTv);
-    console.log(recommendedData);
+    const popularMovie = await NontonDatabase.popular('movie', 1, genreMovie);
+    const popularTv = await NontonDatabase.popular('tv', 1, genreTv);
+    const popularAndRecommendedData = this.combineDataRandom(popularMovie, popularTv);
 
     const recommendedContainer = document.querySelector('#recommended .swiper-wrapper');
     recommendedContainer.innerHTML = '';
-    recommendedData.forEach((recommended) => {
-      recommendedContainer.innerHTML += createRecommendedItemTemplate(recommended);
-    });
+    popularAndRecommendedData.map((recommended) => recommendedContainer.innerHTML += createRecommendedItemTemplate(recommended));
     this.renderSwiperRecommended();
-
-    const popularMovie = await NontonDatabase.popular('movie');
-    const popularTv = await NontonDatabase.popular('tv');
-    const popularData = this.combineDataSort(popularMovie, popularTv);
-    console.log(this.combineDataSort(popularMovie, popularTv));
 
     const popularContainer = document.querySelector('#popular > div');
     popularContainer.innerHTML = '';
-    popularData.forEach((popular) => {
-      popularContainer.innerHTML += createMovieItemTemplate(popular);
-    });
+    popularAndRecommendedData.map((popular) => popularContainer.innerHTML += createMovieItemTemplate(popular));
 
     const topRatedMovie = await NontonDatabase.topRated('movie');
     const topRatedTv = await NontonDatabase.topRated('tv');
     const topRatedData = this.combineDataSort(topRatedMovie, topRatedTv);
-    console.log(this.combineDataSort(topRatedMovie, topRatedTv));
-
     const topRatedContainer = document.querySelector('#topRated > div');
     topRatedContainer.innerHTML = '';
-    topRatedData.forEach((topRated) => {
-      topRatedContainer.innerHTML += createMovieItemTemplate(topRated);
-    });
+    topRatedData.map((topRated) => topRatedContainer.innerHTML += createMovieItemTemplate(topRated));
 
     const trendingData = await NontonDatabase.trending();
-    console.log(trendingData);
 
     const trendingContainer = document.querySelector('#trending > div');
     trendingContainer.innerHTML = '';
-    trendingData.forEach((trending) => {
-      trendingContainer.innerHTML += createMovieItemTemplate(trending);
-    });
+    trendingData.map((trending) => trendingContainer.innerHTML += createMovieItemTemplate(trending));
 
-    const freeToWatchMovie = await NontonDatabase.freeToWatch('movie', genreMovie);
-    const freeToWatchTv = await NontonDatabase.freeToWatch('tv', genreTv);
-    const freeToWatchData = this.combineDataSort(freeToWatchMovie, freeToWatchTv);
-    console.log(this.combineDataSort(freeToWatchMovie, freeToWatchTv));
+    const trendingTrailer = document.querySelector('#trendingTrailer');
+    trendingTrailer.classList.remove('animate-pulse');
+    trendingTrailer.classList.remove('h-72');
+    trendingTrailer.setAttribute('style', `background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('${CONFIG.LARGE_BACKDROP_URL}${trendingData[0].backdrop_path}');`);
 
-    const freeToWatchContainer = document.querySelector('#freeToWatch > div');
-    freeToWatchContainer.innerHTML = '';
-    freeToWatchData.forEach((freeToWatch) => {
-      freeToWatchContainer.innerHTML += createMovieItemTemplate(freeToWatch);
-    });
-
-    const latestMovie = await NontonDatabase.latest('movie', genreMovie, date);
-    const latestTv = await NontonDatabase.latest('tv', genreTv, date);
-    const latesData = this.combineDataRandom(latestMovie, latestTv);
-    console.log(this.combineDataRandom(latestMovie, latestTv));
-
-    const latestTrailer = document.querySelector('#latestTrailer');
-    latestTrailer.classList.remove('animate-pulse');
-    latestTrailer.classList.remove('h-72');
-    latestTrailer.setAttribute('style', `background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('${CONFIG.LARGE_BACKDROP_URL}${latesData[0].backdrop_path}');`);
-
-    const latestTrailerContainer = document.querySelector('#latestTrailer .swiper-wrapper');
-    latesData.forEach((latest) => {
-      latestTrailerContainer.innerHTML += createLatestItemTemplate(latest);
-    });
-    this.renderSwiperLatesTrailer(latestTrailer);
+    const trendingTrailerContainer = document.querySelector('#trendingTrailer .swiper-wrapper');
+    trendingData.map((trendingTrailer) => trendingTrailerContainer.innerHTML += createTrendingTrailerItemTemplate(trendingTrailer));
+    this.renderSwiperTrendingTrailer(trendingTrailer);
   },
 
   combineDataRandom(movie, tv) {
@@ -194,10 +145,6 @@ const Home = {
       direction: 'horizontal',
       spaceBetween: 2,
       loop: true,
-      // navigation: {
-      //   nextEl: '.swiper-button-next',
-      //   prevEl: '.swiper-button-prev',
-      // },
       breakpoints: {
         600: {
           slidesPerView: 2,
@@ -209,8 +156,8 @@ const Home = {
     });
   },
 
-  renderSwiperLatesTrailer(latestTrailerBg) {
-    const latest = new Swiper('.latest', {
+  renderSwiperTrendingTrailer(trendingTrailerBg) {
+    const trendingTrailer = new Swiper('.trendingTrailer', {
       effect: 'coverflow',
       grabCursor: true,
       centeredSlides: true,
@@ -228,10 +175,10 @@ const Home = {
       },
     });
 
-    latest.on('slideChange', () => {
-      const image = latest.slides[latest.activeIndex].querySelector('img').getAttribute('src');
+    trendingTrailer.on('slideChange', () => {
+      const image = trendingTrailer.slides[trendingTrailer.activeIndex].querySelector('img').getAttribute('src');
       console.log(image);
-      latestTrailerBg.setAttribute('style', `background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url('${image}');`);
+      trendingTrailerBg.setAttribute('style', `background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url('${image}');`);
     });
   },
 };

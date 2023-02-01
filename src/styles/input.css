@@ -150,13 +150,13 @@
     @apply sm:bg-gray-400/70 sm:rounded-full w-10;
   }
 
-  #latestTrailer {
+  #trendingTrailer {
     background-repeat: no-repeat !important;
     background-size: cover !important;
     background-position: center !important;
   }
 
-  #latestTrailer .swiper-slide-active > .title-name {
+  #trendingTrailer .swiper-slide-active > .title-name {
     @apply inline-block text-lg font-semibold text-center mt-1 text-sky-50 w-full;
   }
 

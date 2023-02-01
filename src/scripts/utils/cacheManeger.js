@@ -13,11 +13,11 @@ const CacheManager = {
     // }
   },
 
-  async deleteCache() {
-    this.deleteOlderCacheName();
-    // this.deleteWeeklyCache();
-    // this.deleteMontlyCache();
-  },
+  // async deleteCache() {
+  //   this.deleteOlderCacheName();
+  //   // this.deleteWeeklyCache();
+  //   // this.deleteMontlyCache();
+  // },
 
   async deleteOlderCacheName() {
     const cache = await caches.keys();
@@ -37,7 +37,8 @@ const CacheManager = {
   async deleteMontlyCache() {
     const cache = await this._openCache();
     const keys = await cache.keys();
-    keys.filter((key) => key.url.includes('with_genres' || 'append_to_response')).map((key) => cache.delete(key));
+    keys.filter((key) => key.url.includes('with_genres')).map((key) => cache.delete(key));
+    keys.filter((key) => key.url.includes('append_to_response')).map((key) => cache.delete(key));
     // 'with_genres' adala request yg memerlukan genre, akan dihapus selama sebulan
     // 'append_to_response' terdatap dalam request untuk detail movie & tv, akan dihapus selama sebulan
   },

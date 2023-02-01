@@ -15,13 +15,9 @@ const Detail = {
       <div class="w-full backdrop-blur-xl sm:backdrop-blur-0 rounded-t-3xl sm:rounded-t-none h-fit detail__container py-[6px] sm:p-5 md:p-7 gap-3 md:gap-8">
         <div class="detail__image mt-[-60%] sm:mt-0 rounded-2xl overflow-hidden w-full aspect-[2/3] bg-slate-300"></div>
         <div class="h-fit w-full detail__name">
-          <h2 class="sm:text-[38] sm:leading-8 md:text-[40px] md:leading-[50px] font-semibold md:font-bold">Thor Ragnarok</h2>
-          <p class="text-xs font-normal md:text-base"><span>24 Oct, 2017</span><span> &bull; </span><span>2h 11m</span></p>
+          <h2 class="sm:text-[38] sm:leading-8 md:text-[40px] md:leading-[50px] font-semibold md:font-bold"></h2>
+          <p class="text-xs font-normal md:text-base"></p>
           <div class="flex flex-wrap w-full gap-[5px] mt-2">
-            <a href="#" class="px-3 py-0.5 rounded-full block text-xs md:text-sm font-normal border-[1.5px] whitespace-nowrap">Action</a>
-            <a href="#" class="px-3 py-0.5 rounded-full block text-xs md:text-sm font-normal border-[1.5px] whitespace-nowrap">Adventure</a>
-            <a href="#" class="px-3 py-0.5 rounded-full block text-xs md:text-sm font-normal border-[1.5px] whitespace-nowrap">Science Fiction</a>
-            <a href="#" class="px-3 py-0.5 rounded-full block text-xs font-normal border-[1.5px] whitespace-nowrap">Comedy</a>
           </div>
         </div>
         <div class="h-fit w-full detail__ovr">
@@ -37,12 +33,12 @@ const Detail = {
               <object data="./icon/play.svg" type="image/svg+xml" class="w-6"></object>
             </div>
           </div>
-          <section class="py-3 w-full my-4">
-            <i class="font-light text-center sm:text-start sm:font-normal w-full inline-block text-base">“No Hammer. No Problem.”</i>
+          <section id="tagline" class="py-3 w-full my-4">
+            <i class="font-light text-center sm:text-start sm:font-normal w-full inline-block text-base"></i>
           </section>
           <section id="overview" class="px-3 sm:px-0 md:pr-20 mb-5">
             <h1 class="text-xl font-semibold px-2">Overview</h1>
-            <p class="text-base font-normal">Thor is imprisoned on the other side of the universe and finds himself in a race against time to get back to Asgard to stop Ragnarok, the destruction of his home-world and the end of Asgardian civilization, at the hands of a powerful new threat, the ruthless Hela.</p>
+            <p class="text-base font-normal"></p>
           </section>
         </div>
       </div>
@@ -81,48 +77,52 @@ const Detail = {
     const title = document.querySelector('.detail__name > h2');
     title.innerHTML = detailData.title || detailData.name;
 
-    const time = document.querySelector('.detail__name p');
+    const time = document.querySelector('.detail__name > p');
     time.innerHTML = this.generateTime({
       date: detailData.release_date || detailData.first_air_date,
       runtime: detailData.runtime || detailData.episode_run_time[0],
     });
-    // about[0].innerHTML = this.generateReleaseDate(detailData.release_date || detailData.first_air_date);
-    // about[0].innerHTML = this.generateReleaseDate(detailData.runtime
-    //   || detailData.first_air_date);
+
     const genres = document.querySelector('.detail__name div');
     genres.innerHTML = '';
     detailData.genres.map((genre) => genres.innerHTML += `<a href="#" class="px-3 py-0.5 rounded-full block text-xs md:text-sm font-normal border-[1.5px] whitespace-nowrap">${genre.name}</a>`);
 
+    const tagline = document.querySelector('#tagline > i');
+    tagline.innerHTML = `“${detailData.tagline || "it doesn't have a tagline"}”`;
+
+    const overview = document.querySelector('#overview > p');
+    overview.innerHTML = detailData.overview;
+
     detail.innerHTML += `<style>
-    #detail {
-      background-image : url('https://www.themoviedb.org/t/p/w1066_and_h600_bestv2/${detailData.backdrop_path}');
-      background-color: rgba(${warna},1); 
-    }
-
-    #detail .detail__name {
-      color: white;
-      border-color: blue;
-    }
-
-    #detail .detail__ovr {
-      color: ${dataColor.textColor};
-    }
-    
-    @media screen and (min-width: 640px) {
-      #detail>div {
-        background-color: rgba(${warna},.8); 
+      #detail {
+        background-image : url('https://www.themoviedb.org/t/p/w1066_and_h600_bestv2/${detailData.backdrop_path}');
+        background-color: rgba(${warna},1); 
       }
 
       #detail .detail__name {
+        color: white;
+        border-color: blue;
+      }
+
+      #detail .detail__ovr {
         color: ${dataColor.textColor};
       }
 
-      #detail .detail__name a {
-        border-color: ${dataColor.textColor};
+      @media screen and (min-width: 640px) {
+        #detail>div {
+          background-color: rgba(${warna},.8); 
+        }
+
+        #detail .detail__name {
+          color: ${dataColor.textColor};
+        }
+
+        #detail .detail__name a {
+          border-color: ${dataColor.textColor};
+        }
+
       }
-      
-    }
-  </style> `;
+    </style> `;
   },
 
   generateTime({ date, runtime }) {

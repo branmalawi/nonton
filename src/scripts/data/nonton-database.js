@@ -1,3 +1,4 @@
+/* eslint-disable default-param-last */
 /* eslint-disable eqeqeq */
 /* eslint-disable no-unused-expressions */
 import API_ENDPOINT from '../globals/api-endpoint';
@@ -15,14 +16,14 @@ class NontonDatabase {
     return responseJson.results;
   }
 
-  static async topRated(mediaType, page = 1) {
-    const response = await fetch(API_ENDPOINT.BASIC_REQUEST(mediaType, 'top_rated', page));
+  static async topRated(mediaType, page = 1, genres) {
+    const response = await fetch(API_ENDPOINT.BASIC_REQUEST(mediaType, 'top_rated', page, genres));
     const responseJson = await response.json();
     return responseJson.results;
   }
 
-  static async popular(mediaType, page = 1) {
-    const response = await fetch(API_ENDPOINT.BASIC_REQUEST(mediaType, 'popular', page));
+  static async popular(mediaType, page = 1, genres) {
+    const response = await fetch(API_ENDPOINT.BASIC_REQUEST(mediaType, 'popular', page, genres));
     const responseJson = await response.json();
     return responseJson.results;
   }
