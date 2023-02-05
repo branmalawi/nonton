@@ -10,7 +10,7 @@ import InitialColorImage from '../../utils/initialColorImage';
 import dataTest from '../../utils/testData';
 import ButtonFavoriteManager from '../../utils/buttonFavoriteManager';
 import ButtonWatchlistManager from '../../utils/buttonWatchlistManager';
-import { creatDetailNameSectionTemplate, creatDetailOvrSectionTemplate } from '../templates/template-creator';
+import { creatDetailNameSectionTemplate, creatDetailOvrSectionTemplate, createPersonItemTemplate } from '../templates/template-creator';
 
 const Detail = {
   async render() {
@@ -20,16 +20,48 @@ const Detail = {
       <div class="w-full backdrop-blur-xl sm:backdrop-blur-0 rounded-t-3xl sm:rounded-t-none h-fit detail__container py-[6px] sm:p-5 md:p-7 gap-3 md:gap-8">
         <div class="detail__image mt-[-60%] sm:mt-0 rounded-2xl overflow-hidden w-full aspect-[2/3] bg-slate-300"></div>
         <div class="h-fit w-full detail__name">
-          <div class=""></div>
+            <div class="w-[80%] max-w-[400px] h-5 md:h-10 rounded bg-slate-300 dark:bg-gray-600 animate-pulse"></div>
+            <div class="w-[60%] max-w-[150px] h-4 mt-2 rounded bg-slate-300 dark:bg-gray-600 animate-pulse"></div>
+            <div class="flex flex-wrap gap-2 mt-3 max-w-[360px]">
+              <div class="w-[60%] sm:w-[30%] h-7 rounded-full bg-slate-300 dark:bg-gray-600 animate-pulse"></div>
+              <div class="w-[30%] sm:w-[20%] h-7 rounded-full bg-slate-300 dark:bg-gray-600 animate-pulse"></div>
+              <div class="w-[40%] sm:w-[27%] h-7 rounded-full bg-slate-300 dark:bg-gray-600 animate-pulse"></div>
+              <div class="w-[50%] sm:w-[15%] h-7 rounded-full bg-slate-300 dark:bg-gray-600 animate-pulse"></div>
+            </div>
         </div>
         <div class="h-fit w-full detail__ovr">
-          
+          <div class="flex justify-evenly sm:justify-between my-7 w-full sm:max-w-sm">
+            <div class="w-[12%] aspect-square rounded-full bg-slate-300 dark:bg-gray-600 animate-pulse"></div>
+            <div class="w-[12%] aspect-square rounded-full bg-slate-300 dark:bg-gray-600 animate-pulse"></div>
+            <div class="w-[12%] aspect-square rounded-full bg-slate-300 dark:bg-gray-600 animate-pulse"></div>
+            <div class="w-[12%] aspect-square rounded-full bg-slate-300 dark:bg-gray-600 animate-pulse"></div>
+          </div>
+
+          <section id="cast" class="px-2 mt-3">
+            <h1 class="text-xl text-bold px-3">Overview</h1>
+            <div class="flex flex-wrap gap-2 mt-2 px-1">
+              <div class="w-[100%] h-4 rounded-full bg-slate-300 dark:bg-gray-600 animate-pulse"></div>
+              <div class="w-[73%] h-4 rounded-full bg-slate-300 dark:bg-gray-600 animate-pulse"></div>
+              <div class="w-[25%] h-4 rounded-full bg-slate-300 dark:bg-gray-600 animate-pulse"></div>
+              <div class="w-[40%] h-4 rounded-full bg-slate-300 dark:bg-gray-600 animate-pulse"></div>
+              <div class="w-[20%] h-4 rounded-full bg-slate-300 dark:bg-gray-600 animate-pulse"></div>
+              <div class="w-[36%] h-4 rounded-full bg-slate-300 dark:bg-gray-600 animate-pulse"></div>
+              <div class="w-[37%] h-4 rounded-full bg-slate-300 dark:bg-gray-600 animate-pulse"></div>
+              <div class="w-[60%] h-4 rounded-full bg-slate-300 dark:bg-gray-600 animate-pulse"></div>
+              <div class="w-[25%] h-4 rounded-full bg-slate-300 dark:bg-gray-600 animate-pulse"></div>
+              <div class="w-[56%] h-4 rounded-full bg-slate-300 dark:bg-gray-600 animate-pulse"></div>
+              <div class="w-[15%] h-4 rounded-full bg-slate-300 dark:bg-gray-600 animate-pulse"></div>
+              <div class="w-[100%] h-4 rounded-full bg-slate-300 dark:bg-gray-600 animate-pulse"></div>
+              <div class="w-[40%] h-4 rounded-full bg-slate-300 dark:bg-gray-600 animate-pulse"></div>
+            </div>
+          </section>
         </div>
       </div>
     </div>
     <section id="cast" class="px-2 mt-3">
     <h1 class="text-xl text-bold px-3">Cast</h1>
     <div class="p-2 pb-6 flex gap-[2%] min-[700px]:gap[1.5%] min-[890px]:gap-[1%] overflow-y-hidden custom-scrollbar">
+      <person-item class="person-item" id="20" data-type="person" data-src="/sv1xJUazXeYqALzczSZ3O6nkH75.jpg" data-title="wakanda" data-department="actor"></person-item>
       <image-item-skeleton class="person-item animate-pulse"></image-item-skeleton>
       <image-item-skeleton class="person-item animate-pulse"></image-item-skeleton>
       <image-item-skeleton class="person-item animate-pulse"></image-item-skeleton>
@@ -101,8 +133,6 @@ const Detail = {
       buttonWatchlist = about.btn_watchlist;
     }
 
-    // const detailOvrContainer = document.querySelector('.detail__ovr');
-    // detailOvrContainer.innerHTML = creatDetailOvrSectionTemplate();
     const detailNameContainer = document.querySelector('.detail__name');
     detailNameContainer.innerHTML = creatDetailNameSectionTemplate({
       title: detailData.title || detailData.name,
@@ -120,6 +150,7 @@ const Detail = {
 
     const itemData = {
       id: detailData.id,
+      type: detailSrc.verb,
       title: detailData.title || detailData.name,
       date: detailData.release_date || detailData.first_air_date,
       vote_average: detailData.vote_average,
@@ -141,7 +172,9 @@ const Detail = {
     const overview = document.querySelector('#overview > p');
     overview.innerHTML = detailData.overview;
 
-    // console.log(`${dataColor.textColor}99`);
+    const castContainer = document.querySelector('#cast > div');
+    castContainer.innerHTML = '';
+    detailData.casts.cast.map((cast) => castContainer.innerHTML += createPersonItemTemplate(cast));
   },
 };
 

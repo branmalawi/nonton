@@ -33,6 +33,10 @@ const NontonIndexeddb = {
     // return (await dbPromise).put(OBJECT_STORE_INDEXEDDB, object);
   },
 
+  async getData(id) {
+    return (await dbPromise).get(OBJECT_STORE_INDEXEDDB, id);
+  },
+
   async putData(movie) {
     if (!movie.hasOwnProperty('id')) {
       return;
@@ -40,8 +44,8 @@ const NontonIndexeddb = {
     return (await dbPromise).put(OBJECT_STORE_INDEXEDDB, movie);
   },
 
-  async getData(id) {
-    return (await dbPromise).get(OBJECT_STORE_INDEXEDDB, id);
+  async deleteData(id) {
+    return (await dbPromise).delete(OBJECT_STORE_INDEXEDDB, id);
   },
   // async getRestaurant(id) {
   //   if (!id) {

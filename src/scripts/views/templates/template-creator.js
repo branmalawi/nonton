@@ -36,6 +36,16 @@ const createTrendingTrailerItemTemplate = (result) => `
     data-title="${result.title || result.name}">
   </latest-item>
 `;
+
+const createPersonItemTemplate = (result) => `
+  <person-item 
+    class="image-item" 
+    id="${result.cast_id}" 
+    data-type="person" 
+    data-src="${result.profile_path}" data-title="${result.name}" 
+    data-department="${result.character}">
+  </person-item>
+`;
 const createTempalateAboutTimeForDetail = ({ date, runtime }) => {
   let dataDate = '';
   date = date.split('-');
@@ -109,6 +119,7 @@ export {
   createRecommendedItemTemplate,
   createMovieItemTemplate,
   createTrendingTrailerItemTemplate,
+  createPersonItemTemplate,
   creatDetailNameSectionTemplate,
   creatDetailOvrSectionTemplate,
   createButtonLikeDetailTemplate,

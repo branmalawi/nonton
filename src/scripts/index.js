@@ -14,6 +14,7 @@ import './components/appDrawer';
 import './components/recommended-list';
 import './components/rateBar';
 import './components/movieItem';
+import './components/personItem';
 import './components/latestItem';
 import './components/imageItemSkeleton';
 import './components/genreFilter';

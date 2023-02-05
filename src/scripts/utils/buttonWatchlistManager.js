@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-expressions */
+/* eslint-disable max-len */
 import NontonIndexeddb from '../data/nontonIndexeddb';
 import { createButtonWatchListDetailTemplate, createButtonWatchedListDetailTemplate } from '../views/templates/template-creator';
 
@@ -30,7 +32,7 @@ const ButtonWatchlistManager = {
     addToListButton.addEventListener('click', async (event) => {
       event.preventDefault();
       this.data.btn_watchlist = false;
-      await NontonIndexeddb.putData(this.data);
+      this.data.btn_like || this.data.btn_watchlist ? await NontonIndexeddb.putData(this.data) : await NontonIndexeddb.deleteData(this.data.id);
       this.renderWatchlistButton();
     });
   },
