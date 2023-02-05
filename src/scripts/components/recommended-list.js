@@ -1,3 +1,4 @@
+/* eslint-disable import/named */
 /* eslint-disable class-methods-use-this */
 /* eslint-disable eqeqeq */
 /* eslint-disable no-restricted-syntax */
@@ -5,7 +6,7 @@
 /* eslint-disable max-len */
 /* eslint-disable no-plusplus */
 /* eslint-disable radix */
-import GenreData from '../data/genreData';
+import { GenreData } from '../data/basicData';
 import CONFIG from '../globals/config';
 
 class RecommendedList extends HTMLElement {

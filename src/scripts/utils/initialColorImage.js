@@ -24,9 +24,9 @@ const InitialColorImage = {
   checkContrast(data) {
     const result = ((data[0] + data[1] + data[2]) / 3);
     if (result > 127) {
-      return '#000';
+      return '#000000';
     }
-    return '#fff';
+    return '#ffffff';
   },
 };
 

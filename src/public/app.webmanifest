@@ -6,7 +6,7 @@
   "description": "Free Catalogue Movie for you",
   "display": "standalone",
   "background_color": "#E8F0F8",
-  "theme_color": "#FE3696",
+  "theme_color": "#000",
   "icons": [
     {
       "src": "/logo/nonton-72x72.png",

@@ -46,7 +46,7 @@ preferenceButton.addEventListener('click', () => {
 });
 
 darkSwitch.addEventListener('click', () => {
-  document.querySelector('html').classList.toggle('dark');
+  document.documentElement.classList.toggle('dark');
 });
 
 window.addEventListener('hashchange', () => {
