@@ -39,11 +39,12 @@ const createTrendingTrailerItemTemplate = (result) => `
 
 const createPersonItemTemplate = (result) => `
   <person-item 
-    class="image-item" 
+    class="person-item" 
     id="${result.cast_id}" 
     data-type="person" 
-    data-src="${result.profile_path}" data-title="${result.name}" 
-    data-department="${result.character}">
+    data-src="${result.profile_path || ''}" 
+    data-title="${result.name}" 
+    data-department="${result.character || result.department}">
   </person-item>
 `;
 const createTempalateAboutTimeForDetail = ({ date, runtime }) => {

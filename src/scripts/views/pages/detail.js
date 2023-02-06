@@ -60,8 +60,12 @@ const Detail = {
     </div>
     <section id="cast" class="px-2 mt-3">
     <h1 class="text-xl text-bold px-3">Cast</h1>
-    <div class="p-2 pb-6 flex gap-[2%] min-[700px]:gap[1.5%] min-[890px]:gap-[1%] overflow-y-hidden custom-scrollbar">
-      <person-item class="person-item" id="20" data-type="person" data-src="/sv1xJUazXeYqALzczSZ3O6nkH75.jpg" data-title="wakanda" data-department="actor"></person-item>
+    <div class="p-2 pb-3 flex gap-[2%] min-[700px]:gap[1.5%] min-[890px]:gap-[1%] overflow-y-hidden custom-scrollbar">
+      <image-item-skeleton class="person-item animate-pulse"></image-item-skeleton>
+      <image-item-skeleton class="person-item animate-pulse"></image-item-skeleton>
+      <image-item-skeleton class="person-item animate-pulse"></image-item-skeleton>
+      <image-item-skeleton class="person-item animate-pulse"></image-item-skeleton>
+      <image-item-skeleton class="person-item animate-pulse"></image-item-skeleton>
       <image-item-skeleton class="person-item animate-pulse"></image-item-skeleton>
       <image-item-skeleton class="person-item animate-pulse"></image-item-skeleton>
       <image-item-skeleton class="person-item animate-pulse"></image-item-skeleton>
@@ -174,7 +178,14 @@ const Detail = {
 
     const castContainer = document.querySelector('#cast > div');
     castContainer.innerHTML = '';
-    detailData.casts.cast.map((cast) => castContainer.innerHTML += createPersonItemTemplate(cast));
+    detailData.credits.cast.map((cast) => castContainer.innerHTML += createPersonItemTemplate(cast));
+
+    const castCount = 15 - detailData.credits.cast.length;
+    // eslint-disable-next-line for-direction, no-plusplus
+    for (let i = 0; i < castCount; i++) {
+      castContainer.innerHTML += createPersonItemTemplate(detailData.credits.crew[i]);
+    }
+    console.log(detailData.seasons || detailData.belongs_to_collection);
   },
 };
 

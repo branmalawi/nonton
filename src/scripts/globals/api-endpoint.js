@@ -6,7 +6,7 @@ const API_ENDPOINT = {
   LATEST: (type, genres, year, page) => `${CONFIG.BASE_URL}discover/${type}?api_key=${CONFIG.KEY}&language=${CONFIG.DEFAULT_LANGUAGE}&sort_by=popularity.desc&page=${page}&${year}&with_genres=${genres}&with_watch_monetization_types=flatrate`,
   TRENDING: `${CONFIG.BASE_URL}trending/all/week?api_key=${CONFIG.KEY}&language=${CONFIG.DEFAULT_LANGUAGE}`,
   BASIC_REQUEST: (mediaType, requestType, page, genres) => `${CONFIG.BASE_URL}${mediaType}/${requestType}?api_key=${CONFIG.KEY}&language=${CONFIG.DEFAULT_LANGUAGE}&page=${page}&with_genres=${genres}`,
-  DETAIL: (type, id) => `${CONFIG.BASE_URL}${type}/${id}?api_key=${CONFIG.KEY}&language=${CONFIG.DEFAULT_LANGUAGE}&append_to_response=videos,images,casts`,
+  DETAIL: (type, id) => `${CONFIG.BASE_URL}${type}/${id}?api_key=${CONFIG.KEY}&language=${CONFIG.DEFAULT_LANGUAGE}&append_to_response=videos,images,credits`,
   SEARCH: (keyword, page) => `${CONFIG.BASE_URL}search/multi?api_key=${CONFIG.KEY}&language=${CONFIG.DEFAULT_LANGUAGE}&query=${keyword}&page=${page}&include_adult=false`,
   GENRE: (type) => `${CONFIG.BASE_URL}genre/${type}/list?api_key=${CONFIG.KEY}&language=${CONFIG.DEFAULT_LANGUAGE}`,
 };

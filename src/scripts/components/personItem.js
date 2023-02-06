@@ -14,15 +14,19 @@ class PersonItem extends HTMLElement {
   render() {
     this.innerHTML = `
       <a href="#/about/${this.type}/${this.id}">
-        <div class="poster aspect-[3/4] rounded-xl overflow-hidden relative flex items-start justify-center">
-          <img data-src="${CONFIG.LARGE_POSTER_URL}${this.src}" src="./logo/nonton.svg" alt="${this.title} poster" class="w-full lazyload"/>
+        <div class="poster aspect-[3/4] rounded-xl overflow-hidden relative flex items-start justify-center bg-[url('../public/icon/person-bg.svg')] bg-center bg-cover">
+          <img data-src="${CONFIG.LARGE_POSTER_URL}${this.src}" src="./logo/test2.png" alt="${this.title} poster" class="w-full lazyload"/>
         </div>
       </a>
       <a href="#/detail/${this.type}/${this.id}">
-        <h2 class="ml-[2px] mt-0.5 text-base font-medium">${this.title}</h2>
+        <h2 class="ml-[2px] mt-0.5 text-sm font-medium">${this.title}</h2>
       </a>
-      <p class="ml-[2px] text-sm font-normal">${this.department}</p>
+      <p class="ml-[2px] text-xs font-normal">${this.department}</p>
     `;
+
+    if (!this.src) {
+      this.querySelector('img').remove();
+    }
   }
 }
 

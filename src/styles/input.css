@@ -135,7 +135,7 @@
   }
 
   .person-item {
-    @apply min-w-[23.5%] min-[470px]:min-w-[18.4%] min-[700px]:min-w-[15%] min-[890px]:min-w-[11.7%] min-[1310px]:min-w-[11%];
+    @apply min-w-[23.5%] min-[470px]:min-w-[18.4%] min-[700px]:min-w-[15%] min-[960px]:min-w-[8.7%];
   }
 
   .image-item {
